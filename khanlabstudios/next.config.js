@@ -13,7 +13,12 @@ const nextConfig = {
             permanent: true,
         }
         ]
-    }
+    },
+    experimental: {
+        serverActions: {
+          bodySizeLimit: '1024mb',
+        },
+    },
 }
 
 module.exports = nextConfig;
