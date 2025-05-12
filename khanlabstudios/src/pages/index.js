@@ -1,5 +1,5 @@
 import styles from '../globals.module.css';
-
+import StoryCard from './components/story.js'
 export default function Page() {
     return (
         <div className="container text-center mt-5">
