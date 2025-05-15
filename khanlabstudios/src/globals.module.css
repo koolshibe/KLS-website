@@ -281,3 +281,10 @@ body {
     float: right;
     float: top;
 }
+
+.cardStudentDepartment::before {
+    content: "Department: ";
+    color: #0070f3;
+    font-weight: 600;
+    margin-right: 4px;
+}
