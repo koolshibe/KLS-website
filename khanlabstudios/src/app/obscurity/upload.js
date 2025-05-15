@@ -8,7 +8,7 @@ export async function upload(formdata) {
 
     const {data, error } = await supabase  
         .from('stories')  
-        .upsert({ title: formdata.get("title"), author: formdata.get("author")}, { onConflict: 'author', 'title' })
+        .upsert({ title: formdata.get("title"), author: formdata.get("author")})
         .select()
 
     const dir = await fs.mkdir(`${process.cwd()}/public/${data[0]["id"]}`, {recursive:true});

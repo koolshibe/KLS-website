@@ -6,11 +6,12 @@ export function Storycard({title, student, date, storyID}) {
     let newStudent = student.toUpperCase();
     return (
       <div id={styles.storyCard}> 
-        <Link href={`/stories/${storyID}`}>
-          <h4 className={styles.cardStudent}><strong>{newStudent}</strong></h4><span className={styles.breakLine}></span>
-          <p className={styles.cardDate}>{date}</p><span className={styles.breakLine}></span>
-          <h1 className={styles.cardTitle}><strong>{title}</strong></h1><span className={styles.breakLine}></span>
-        </Link>
+          <div className={styles.smallContainer}>
+            <h4 className={styles.cardStudent}><strong>{newStudent}</strong></h4><span className={styles.breakLine}></span>
+            <p className={styles.cardDate}>{date}</p><span className={styles.breakLine}></span>
+            <h1 className={styles.cardTitle}><strong>{title}</strong></h1><span className={styles.breakLine}></span>
+            <Link href={`/stories/${storyID}`} className={styles.cardButton}></Link>
+          </div>
       </div>
     );
 }
