@@ -10,7 +10,7 @@ export function Storycard({title, student, date, storyID}) {
             <h4 className={styles.cardStudent}><strong>{newStudent}</strong></h4><span className={styles.breakLine}></span>
             <p className={styles.cardDate}>{date}</p><span className={styles.breakLine}></span>
             <h1 className={styles.cardTitle}><strong>{title}</strong></h1><span className={styles.breakLine}></span>
-            <Link href={`/stories/${storyID}`} className={styles.cardButton}></Link>
+            <Link href={`/stories/${storyID}`} className={styles.cardButton}>Explore</Link>
           </div>
       </div>
     );
