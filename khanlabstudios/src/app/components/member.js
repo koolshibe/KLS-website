@@ -1,7 +1,7 @@
 import styles from '../../globals.module.css';
 import Link from 'next/link';
 
-export function MemberCard({ student, bio, studentID , department }) {
+export function Membercard({ student, bio, studentID , department }) {
   const newStudent = student.toUpperCase();
 
   return (
