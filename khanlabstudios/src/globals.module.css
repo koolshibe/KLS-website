@@ -7,6 +7,7 @@
 body {
     background-color: white;
     font-family: 'Ronoto', sans-serif;
+    margin-top: 5rem; /* Adjust this value to match the navbar height */
 }
 
 @keyframes fadeInUp {
@@ -307,3 +308,83 @@ body {
     font-weight: 600;
     margin-right: 4px;
 }
+
+/* ------------------------------------------------------------------------------------------------------------------------------ */
+/* NAVBAR CSS */
+
+.navContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: black;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    margin-bottom: 100%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.navbar {
+    font-size: 1.2rem; /* Increases the font size */
+    padding: 1.5rem; /* Increases the padding */
+    background-color: black;
+    padding: 0.5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    margin-bottom: 2rem;
+    color: white;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.navLink {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.navLink:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #00ffff;
+}
+.navLink.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #00ffff;
+}
+.logoContainer { 
+    display: inline-block; 
+    align-items: left; 
+    /* justify-content: flex-start; */
+    /* flex-direction: row; */
+    vertical-align: middle;
+}
+.logoText {
+    margin: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.logoImage {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
+}
+
+/* ------------------------------------------------------------------------------------------------------------------------------ */

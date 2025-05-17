@@ -1,5 +1,4 @@
 import styles from '../globals.module.css';
-
 export default function Page() {
     return (
         <div className="container text-center mt-5">
