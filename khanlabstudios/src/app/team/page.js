@@ -1,6 +1,5 @@
 import styles from '../../globals.module.css';
-import {MemberCard} from '@/app/components/member.js';
-
+import {Membercard} from '@/app/components/member.js';
 export default function Page() {
     return (
         <div className="container text-center mt-5">

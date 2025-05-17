@@ -7,11 +7,14 @@ export default async function Page() {
 
     return (
         <div>
-            <h1>WOW! STORIES!</h1>
+            <h1 className={styles.title}>Red String Stories</h1>
             <div>
                 <div id={styles.sidebar} className={styles.floatLeft}>
+                    <h3 style={
+                        { textAlign: 'center', fontSize: '1.5rem', marginBottom: '2rem', fontFamily: 'Roboto'}
+                    }>Quick Access</h3>
                     {data.map((x, index) =>
-                        <a className={styles.locallink} key={index} href={`#${x['author']}.${x['title']}}`}>{`${x['author']}.${x['title']}`}</a>
+                        <a className={styles.locallink} key={index} href={`#${x['author']}.${x['title']}}`}>{`${x['title']} - ${x['author']}`}</a>
                     )}
                 </div>
                 <div className={styles.floatRight}>
