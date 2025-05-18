@@ -1,9 +1,11 @@
 @import url('bootstrap/dist/css/bootstrap.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 :root {
-    --x:15%;
+    --x: 15%;
     --y: calc(var(--x) * 1vw / 1%);
 }
+
 body {
     background-color: white;
     font-family: 'Ronoto', sans-serif;
@@ -47,7 +49,8 @@ body {
     width: 100vw;
 }
 
-.title, .description{
+.title,
+.description {
     /* animation: fadeInUp 2s; */
     font-family: 'Roboto', sans-serif;
     text-align: center;
@@ -84,6 +87,7 @@ body {
     color: white;
     font-size: 12px;
 }
+
 /* ------------------------------------------------------------------------------------------------------------------------------ */
 /* COMPONENTS CSS */
 /* STORY CARDS */
@@ -194,20 +198,20 @@ body {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: linear-gradient(
-    0deg, 
-    transparent, 
-    transparent 30%, 
-    rgba(0,255,255,0.3)
-  );
-  transform: rotate(-45deg);
-  transition: all 0.5s ease;
-  opacity: 0;
+    background: linear-gradient(0deg,
+            transparent,
+            transparent 30%,
+            rgba(0, 255, 255, 0.3));
+    transform: rotate(-45deg);
+    transition: all 0.5s ease;
+    opacity: 0;
 }
+
 .cardButton:hover {
     transform: scale(1.08);
     box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
 }
+
 .cardButton:hover::before {
     opacity: 1;
     transform: rotate(-45deg) translateY(100%);
@@ -221,7 +225,7 @@ body {
 .cardButton {
     border-radius: 20px;
     padding: 16px;
-    color:#0ff;
+    color: #0ff;
     border: none;
     /* margin-top: 0.4%; */
     background: rgb(46, 46, 46);
@@ -230,7 +234,7 @@ body {
     align-items: center;
     position: relative;
     overflow: hidden;
-    margin-bottom:1%;
+    margin-bottom: 1%;
     text-decoration: none;
     font-weight: 400;
     font-size: 15px;
@@ -286,8 +290,10 @@ body {
     color: #555;
     font-size: 1rem;
     line-height: 1.6;
-    clear: both; /* Ensures the bio does not overlap with floated elements like the image */
-    padding-top: 0.6rem; /* Slightly increased spacing to separate it more from the image */
+    clear: both;
+    /* Ensures the bio does not overlap with floated elements like the image */
+    padding-top: 0.6rem;
+    /* Slightly increased spacing to separate it more from the image */
 }
 
 .cardImage {
