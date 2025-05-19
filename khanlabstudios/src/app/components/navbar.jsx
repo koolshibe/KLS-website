@@ -16,11 +16,16 @@ const Navbar = () => {
                         />
                     <h3 className={styles.logoText}>Red String Studios</h3>
                 </div>
-                <Link href="/" className={styles.navLink}>Home</Link>
-                <Link href="/team" className={styles.navLink}>Team</Link>
-                <Link href="/departments" className={styles.navLink}>Department</Link>
-                <Link href="/stories" className={styles.navLink}>Stories</Link>
-                <Link href="/account" className={styles.navLink}>Account</Link>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className={styles.navbarCollapse}>
+                        <Link href="/" className={styles.navLink}>Home</Link>
+                        <Link href="/team" className={styles.navLink}>Team</Link>
+                        <Link href="/departments" className={styles.navLink}>Department</Link>
+                        <Link href="/stories" className={styles.navLink}>Stories</Link>
+                        <Link href="/account" className={styles.navLink}>Account</Link>
+                </div>
             </nav>
         </div>
     );
