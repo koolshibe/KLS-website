@@ -4,8 +4,8 @@ import styles from '../../globals.module.css';
 import Image from 'next/image';
 const Navbar = () => {  
     return (
-        <div className={styles.navContainer}>
-            <nav className={styles.navbar}>
+        <div className="fixed w-full h-24 shadow bg-white z-10">
+            <nav className={`navbar navbar-expand-lg navbar-light fixed w-full h-24 shadow bg-black z-10" ${styles.navbar}`}>
                 <div className={styles.logoContainer}>
                         <Image 
                             src="/logo/logo.png" 
@@ -24,7 +24,7 @@ const Navbar = () => {
                         <Link href="/team" className={styles.navLink}>Team</Link>
                         <Link href="/departments" className={styles.navLink}>Department</Link>
                         <Link href="/stories" className={styles.navLink}>Stories</Link>
-                        <Link href="/account" className={styles.navLink}>Account</Link>
+                        <Link href="/obscurity" className={styles.navLink}>Account</Link>
                 </div>
             </nav>
         </div>
