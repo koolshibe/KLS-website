@@ -40,7 +40,54 @@ body {
         opacity: 1;
     }
 }
+@media screen and (max-width: 1100px) {
+    .sidebar {
+        display: none;
+    }
+    body #storyCard {
+        align-self: center;
+        width: 92vw;
+        left: 4vw;
+        /* font-size: calc(100% - 10px); */
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+}
+@media screen and (max-width: 992px) {
+    body .cardLink {
+        width: 95%;   
+        margin: 1rem;
+        margin-right: 0.6rem;
+    }
+}
 
+@media screen and (max-width: 768px) {
+    body .cardSummary {
+        font-size: 15px;
+        margin-left: 0rem;
+        /* margin-right: 0rem; */
+    }
+    body .cardStudent {
+        font-size: 20px;
+        margin-left: 0rem;
+        /* margin-right: 0rem; */
+    }
+    body .cardDate {
+        font-size: 15px;
+        margin-left: 0rem;
+        /* margin-right: 0rem; */
+    }
+    body .cardButton {
+        font-size: 15px;
+        margin-left: 0rem;
+        /* margin-right: 0rem; */
+    }
+    body .cardTitle {
+        font-size: 40px;
+        margin-left: 0rem;
+        /* margin-right: 0rem; */
+    }
+}
 .floatLeft {
     float: left;
 }
@@ -61,11 +108,11 @@ body {
     animation: fadeInUp 2s;
 }
 
-#sidebar {
+.sidebar {
     width: 13vw;
     max-width: 13vw;
     position: fixed;
-    top: 4.1rem; /* Adjust this value to match the navbar height */
+    top: 4.13rem; /* Adjust this value to match the navbar height */
     left: 0;
     height: calc(100vh - 4.1rem); /* Adjust this value to match the navbar height */
     background-color: black;
@@ -106,8 +153,8 @@ body {
     margin-bottom: 1%;
     transition: all 0.3s ease;
     text-align: left;
-    min-height: 55vh; /* Ensures a minimum height of 55vh */
-    max-height:100vh;
+    min-height: 50vh; /* Ensures a minimum height of 55vh */
+    /* max-height:100vh; */
     height: max-content; /* Allows it to grow if content exceeds 55vh */
     padding-bottom: 1.5rem;
     box-sizing: border-box; /* Ensures padding is included in the total height */
@@ -124,10 +171,7 @@ body {
     position: relative;
     text-align: left;
     left: -0.5%;
-    padding-right: 2%;
-    padding-top: 3%;
-    padding-bottom: 3%;
-    padding-left: 3%;
+    padding: 3rem;
 }
 
 .cardTitle {
@@ -285,9 +329,9 @@ body {
     color: inherit;
     display: inline-block;
     vertical-align: top;
-    max-width: 28vw;
+    /* max-width: 28vw; */
     width: 28vw;
-    margin: 1rem auto;
+    margin: 1rem;
     margin-right: 0.6rem;
     margin-left: 0.6rem;
 }
@@ -339,7 +383,16 @@ body {
 
 /* ------------------------------------------------------------------------------------------------------------------------------ */
 /* NAVBAR CSS */
-
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap; /* Ensures items stay on the same line */
+}
+.navLink, .navbarCollapse, .logoContainer, .toggleButton {
+    display: inline-block;
+    vertical-align: middle;
+}
 .navContainer {
     display: flex;
     justify-content: space-between;
@@ -376,7 +429,8 @@ body {
     margin-bottom: 2rem;
     color: white;
     vertical-align: middle;
-    display: inline-block;
+    display: flex;
+    /* justify-content: space-between; */
 }
 
 .navLink {
@@ -420,4 +474,57 @@ body {
     align-items: center;
 }
 
+.navbar-dark .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;..");
+    align-items: right;
+    margin: 0;
+}
+.navSideBar {
+    text-decoration: none;
+    color: black;
+    padding : 0.5rem 1rem;
+    /* position: fixed; */
+}
+
+.navLinkSide {
+    color: gray;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.navLinkSide:hover {
+    color: black;
+}
+.navLinkSide.active {
+    color: black;
+}
+.navList {
+    list-style: none;
+    padding-bottom: 1rem;
+}
+.navSideLink {
+    text-decoration: none;
+    color: inherit;
+    position: inherit;
+}
+.toggleButton {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+/* .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 1rem 2rem;`
+    background-color: black;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+} */
 /* ------------------------------------------------------------------------------------------------------------------------------ */

@@ -1,11 +1,37 @@
+"use client"
 import React from "react";
 import Link from 'next/link';
 import styles from '../../globals.module.css';
 import Image from 'next/image';
-const Navbar = () => {  
+import 'bootstrap/dist/css/bootstrap.min.css';  
+import { useState } from 'react';
+// import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+const Navbar = () => { 
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleNavbar = () => {
+        setIsOpen(!isOpen);
+    };
+
+    React.useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth > 768) {
+                setIsOpen(false);
+                const collapsibleNavbar = document.getElementById('collapsibleNavbar');
+                if (collapsibleNavbar) {
+                    collapsibleNavbar.classList.remove('show');
+                }
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
     return (
         <div className="fixed w-full h-24 shadow bg-white z-10">
-            <nav className={`navbar navbar-expand-lg navbar-light fixed w-full h-24 shadow bg-black z-10" ${styles.navbar}`}>
+            <nav className={`navbar navbar-expand-lg navbar-light fixed w-full h-24 shadow bg-black z-10 ${styles.navbar}`}>
                 <div className={styles.logoContainer}>
                         <Image 
                             src="/logo/logo.png" 
@@ -16,17 +42,42 @@ const Navbar = () => {
                         />
                     <h3 className={styles.logoText}>Red String Studios</h3>
                 </div>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className={styles.navbarCollapse}>
-                        <Link href="/" className={styles.navLink}>Home</Link>
-                        <Link href="/team" className={styles.navLink}>Team</Link>
-                        <Link href="/departments" className={styles.navLink}>Department</Link>
-                        <Link href="/stories" className={styles.navLink}>Stories</Link>
-                        <Link href="/obscurity" className={styles.navLink}>Account</Link>
+                <div className={`collapse navbar-collapse ${styles.navbarCollapse}`} id="visibleNavbar">
+                    <Link href="/" className={styles.navLink}>Home</Link>
+                    <Link href="/team" className={styles.navLink}>Team</Link>
+                    <Link href="/departments" className={styles.navLink}>Department</Link>
+                    <Link href="/stories" className={styles.navLink}>Stories</Link>
+                    <Link href="/obscurity" className={styles.navLink}>Account</Link>
                 </div>
+                <button 
+                    className={`navbar-toggler ${styles.toggleButton}`} 
+                    type="button" 
+                    onClick={toggleNavbar}
+                >
+                    <span className="navbar-dark navbar-toggler-icon"></span>
+                </button>
             </nav>
+            { isOpen && (
+                <div className={styles.navSidebar} id="collapsibleNavbar">
+                    <ul className={styles.navList}>
+                        <Link href="/" className={styles.navSideLink}>
+                            <li className={styles.navLinkSide}>Home</li>
+                        </Link>
+                        <Link href="/team" className={styles.navSideLink}>
+                            <li className={styles.navLinkSide}>Team</li>
+                        </Link>
+                        <Link href="/departments" className={styles.navSideLink}>
+                            <li className={styles.navLinkSide}>Departments</li>
+                        </Link>
+                        <Link href="/stories" className={styles.navSideLink}>
+                            <li className={styles.navLinkSide}>Stories</li>
+                        </Link>
+                        <Link href="/obscurity" className={styles.navSideLink}>
+                            <li className={styles.navLinkSide}>Accounts</li>
+                        </Link>
+                    </ul>
+                </div>
+            )}
         </div>
     );
 };

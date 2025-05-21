@@ -1,15 +1,16 @@
 import { storyfetch } from './fetch.js';
 import { Storycard } from '@/app/components/card.js';
 import styles from '@/globals.module.css';
-
+import React from 'react'; 
 export default async function Page() {
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const sidebarStyle = isMobile ? { display: 'none' } : {};
     const data = await storyfetch();
-
     return (
         <div>
             <h1 className={styles.title}>Red String Stories</h1>
             <div>
-                <div id={styles.sidebar} className={styles.floatLeft}>
+                <div className={`${styles.sidebar} ${styles.floatLeft}`} id='sidebar' style={sidebarStyle}>
                     <h3 style={
                         { textAlign: 'center', fontSize: '1.5rem', marginBottom: '2rem', fontFamily: 'Roboto'}
                     }>Quick Access</h3>
