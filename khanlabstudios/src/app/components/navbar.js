@@ -1,8 +1,11 @@
-import React from "react";
+'use client';
+
 import Link from 'next/link';
-import styles from '../../globals.module.css';
+import { TransitionLink } from './transitionlink.js';
+import styles from '@/globals.module.css';
 import Image from 'next/image';
-const Navbar = () => {  
+
+export function Navbar() {  
     return (
         <div className="fixed w-full h-24 shadow bg-white z-10">
             <nav className={`navbar navbar-expand-lg navbar-light fixed w-full h-24 shadow bg-black z-10" ${styles.navbar}`}>
@@ -20,14 +23,13 @@ const Navbar = () => {
                 <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className={styles.navbarCollapse}>
-                        <Link href="/" className={styles.navLink}>Home</Link>
-                        <Link href="/team" className={styles.navLink}>Team</Link>
-                        <Link href="/departments" className={styles.navLink}>Department</Link>
-                        <Link href="/stories" className={styles.navLink}>Stories</Link>
-                        <Link href="/obscurity" className={styles.navLink}>Account</Link>
+                        <TransitionLink href="/" className={styles.navLink}>Home</TransitionLink>
+                        <TransitionLink href="/team" className={styles.navLink}>Team</TransitionLink>
+                        <TransitionLink href="/departments" className={styles.navLink}>Department</TransitionLink>
+                        <TransitionLink href="/stories" className={styles.navLink}>Stories</TransitionLink>
+                        <TransitionLink href="/obscurity" className={styles.navLink}>Account</TransitionLink>
                 </div>
             </nav>
         </div>
     );
 };
-export default Navbar;

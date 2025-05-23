@@ -7,7 +7,7 @@ export default async function Page({ params }) {
     const data = await storyfetch(slug)
 
     return (
-        <div>
+        <div key="exist">
             <h1>WOW! STORIES!</h1>
             {data.map((x, index) =>
                 <div key={`${index}.${index}`} id={`${x['author']}.${x['title']}`}>

@@ -1,12 +1,24 @@
-import { storyfetch } from './fetch.js';
 import { Storycard } from '@/app/components/card.js';
 import styles from '@/globals.module.css';
+import { createClient } from '@/utils/supabase/server';
+
+export async function storyfetch() {
+    const supabase = await createClient();
+
+    const { data, error } = await supabase
+        .from("stories")
+        .select()
+
+    return (
+        data
+    );
+}
 
 export default async function Page() {
     const data = await storyfetch();
 
     return (
-        <div>
+        <div key="exist">
             <h1 className={styles.title}>Red String Stories</h1>
             <div>
                 <div id={styles.sidebar} className={styles.floatLeft}>
