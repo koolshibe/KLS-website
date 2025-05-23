@@ -1,6 +1,7 @@
 import { Storycard } from '@/app/components/card.js';
 import styles from '@/globals.module.css';
-import React from 'react'; import { createClient } from '@/utils/supabase/server';
+import React from 'react'; 
+import { createClient } from '@/utils/supabase/server';
 
 export async function storyfetch() {
     const supabase = await createClient();

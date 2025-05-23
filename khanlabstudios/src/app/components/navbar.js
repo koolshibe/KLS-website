@@ -8,6 +8,7 @@ import Image from 'next/image';
 import 'bootstrap/dist/css/bootstrap.min.css';  
 import { useState } from 'react';
 // import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 export function Navbar() { 
     const [isOpen, setIsOpen] = useState(false);
     const sidebarAnimation = (action) => {
@@ -55,7 +56,7 @@ export function Navbar() {
         <div className="fixed w-full h-24 shadow bg-white z-10">
             <nav className={`navbar navbar-expand-lg navbar-light fixed w-full h-24 shadow bg-#fffbf7 z-10 ${styles.navbar}`}>
                 <div className={styles.logoContainer}>
-                    <Link href="/" className={styles.navSideLink}>
+                    <TransitionLink href="/" className={styles.navSideLink}>
                         <Image 
                             src="/logo/logo.png" 
                             alt="logo" 
@@ -64,14 +65,7 @@ export function Navbar() {
                             className={styles.logoImage} 
                         />
                     <h3 className={styles.logoText}>Red String Studios</h3>
-                    </Link>
-                </div>
-                <div className={`collapse navbar-collapse ${styles.navbarCollapse}`} id="visibleNavbar">
-                    <Link href="/" className={styles.navLink}>Home</Link>
-                    <Link href="/team" className={styles.navLink}>Our Team</Link>
-                    <Link href="/departments" className={styles.navLink}>Departments</Link>
-                    <Link href="/stories" className={styles.navLink}>Stories</Link>
-                    <Link href="/obscurity" className={styles.navLink}>Account</Link>
+                    </TransitionLink>
                 </div>
                 <button 
                     className={`navbar-toggler ${styles.toggleButton}`} 
