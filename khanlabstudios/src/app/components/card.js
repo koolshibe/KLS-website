@@ -4,7 +4,7 @@ import { TransitionLink } from './transitionlink';
 export function Storycard({title, student, date, storyID, summary}) {
     let newStudent = student.toUpperCase();
     return (
-      <div id={styles.storyCard}> 
+      <div id={styles.storyCard} className={styles.cardClass}> 
           <div className={styles.smallContainer}>
             <h4 className={styles.cardStudent}><strong>{newStudent}</strong></h4><span className={styles.breakLine}></span>
             <p className={styles.cardDate}>{date}</p><span className={styles.breakLine}></span>

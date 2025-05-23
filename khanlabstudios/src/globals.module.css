@@ -1,6 +1,12 @@
 @import url('bootstrap/dist/css/bootstrap.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* COLOR SCHEME
+#fffbf7
+#a41313
+#00000 
+*/
+
 :root {
     --x: 15%;
     --y: calc(var(--x) * 1vw / 1%);
@@ -55,7 +61,59 @@ body {
         opacity: 1;
     }
 }
+@media screen and (max-width: 1100px) {
+    .sidebar {
+        display: none;
+    }
+    body #storyCard {
+        align-self: center;
+        width: 92vw;
+        left: 4vw;
+        /* font-size: calc(100% - 10px); */
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+}
+@media screen and (max-width: 992px) {
+    body .cardLink {
+        width: 95%;   
+        margin: 1rem;
+        margin-right: 0.6rem;
+    }
+}
 
+@media screen and (max-width: 768px) {
+    body .cardSummary {
+        font-size: 15px;
+        margin-left: 0rem;
+        /* margin-right: 0rem; */
+    }
+    body .cardStudent {
+        font-size: 20px;
+        margin-left: 0rem;
+        /* margin-right: 0rem; */
+    }
+    body .cardDate {
+        font-size: 15px;
+        margin-left: 0rem;
+        /* margin-right: 0rem; */
+    }
+    body .cardButton {
+        font-size: 15px;
+        margin-left: 0rem;
+        /* margin-right: 0rem; */
+        padding:14px;
+    }
+    body .cardTitle {
+        font-size: 40px;
+        margin-left: 0rem;
+        /* margin-right: 0rem; */
+    }
+    body .cardSummary:hover, body .cardStudent:hover, body .cardDate:hover, body .cardTitle:hover {
+        margin-left: 1rem;
+        /* margin-right: 0rem; */
+    }
+}
 .floatLeft {
     float: left;
 }
@@ -70,46 +128,47 @@ body {
     font-family: 'Roboto', sans-serif;
     text-align: center;
     margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.title {
+    color: #a41313;
+    font-weight: 800;
 }
 
 .description {
     animation: fadeInUp 2s;
 }
 
-
-@keyframes flip {
-    from {
-        transform: rotateY(90deg);
-    }
-    to {
-        transform: rotateY(0deg);
-    }
-}
-#sidebar {
+.sidebar {
     width: 13vw;
     max-width: 13vw;
     position: fixed;
     top: 4.1rem; /* Adjust this value to match the navbar height */
     left: 0;
     height: calc(100vh - 4.1rem); /* Adjust this value to match the navbar height */
-    background-color: black;
-    color: white;
+    background-color: #fffbf7;
     overflow-y: auto;
+    color:#a41313;
     padding: 1.5rem;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
-    z-index: 5;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5); /* Removed shadow at the top */
+    z-index: 1000;
 }
 
 .locallink {
     break-after: always;
     display: block;
-    border-top: 0.3px solid white;
     padding: 3px;
-    margin-left: 10px;
+    /* margin-left: 10px; */
     text-decoration: none;
     margin-bottom: 5px;
-    color: white;
+    color: black;
     font-size: 12px;
+    text-align: center;
+}
+
+.locallink:hover {
+    color:#a41313;
 }
 
 /* ------------------------------------------------------------------------------------------------------------------------------ */
@@ -118,30 +177,30 @@ body {
 
 #storyCard {
     opacity: 0.9;
-    background-color: rgb(0, 0, 0);
-    color: white;
-    width: calc(95% - var(--x));
+    background-color: #fffbf7;
+    width: calc(96% - var(--x));
     left: var(--x);
     border-radius: 20px;
     position: relative;
     font-family: 'Roboto';
     font-weight: 100;
     display: block;
-    margin-bottom: 1%;
+    margin-bottom: 1rem;
     transition: all 0.3s ease;
     text-align: left;
-    min-height: 55vh; /* Ensures a minimum height of 55vh */
-    max-height:100vh;
+    min-height: 50vh; /* Ensures a minimum height of 55vh */
+    /* max-height:100vh; */
     height: max-content; /* Allows it to grow if content exceeds 55vh */
-    padding-bottom: 1.5rem;
     box-sizing: border-box; /* Ensures padding is included in the total height */
     padding-bottom: 1rem;
+    margin-top:1rem;
+    box-shadow: 0 0 7px gray;
 }
 
 
 #storyCard:hover {
     transform: scale(1.02);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+    box-shadow: 0 0 20px #a41313;
     transition: all 0.3s ease;
 }
 
@@ -149,15 +208,12 @@ body {
     position: relative;
     text-align: left;
     left: -0.5%;
-    padding-right: 2%;
-    padding-top: 3%;
-    padding-bottom: 3%;
-    padding-left: 3%;
+    padding: 2rem;
 }
 
 .cardTitle {
     font-size: 50px;
-    color: white;
+    color: #a41313;
     display: flex;
     /* align-items: center; */
     /* text-align: center; */
@@ -167,24 +223,26 @@ body {
 
 .cardSummary {
     margin-top:4px;
-    color: white;
+    color: black;
     font-size:15px;
     position: relative;
     display: inline-block;
     max-width: 80%;
+    font-weight: 200;
 }
 
 .cardStudent {
-    color: #ffffff;
+    color: #a41313;
     position: relative;
     display: inline-block;
 }
 
 .cardDate {
-    color:white;
+    color:black;
     margin-top: 5px;
     position: relative;
     /* display: inline-block; */
+    font-weight: 400;
 }
 
 .cardStudent::after,
@@ -195,7 +253,7 @@ body {
   position: absolute;
   width: 100%;
   height: 2px;
-  background: linear-gradient(to right, #ff0000, #00ffff);
+  background: linear-gradient(to right, #ff0000, #ff6a00);
   bottom: -5px;
   left: 0;
   transform: scaleX(0);
@@ -241,7 +299,7 @@ body {
     0deg, 
     transparent, 
     transparent 30%, 
-    rgba(0,255,255,0.3)
+    rgba(255, 255, 255, 0.42)
   );
   transform: rotate(-45deg);
   transition: all 0.5s ease;
@@ -249,7 +307,7 @@ body {
 }
 .cardButton:hover {
     transform: scale(1.08);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+    box-shadow: 0 0 20px #a41313;
 }
 .cardButton:hover::before {
     opacity: 1;
@@ -272,10 +330,10 @@ body {
 .cardButton {
     border-radius: 20px;
     padding: 16px;
-    color: #0ff;
+    color: white;
     border: none;
     /* margin-top: 0.4%; */
-    background: rgb(46, 46, 46);
+    background: #A33333;
     display: block;
     /* justify-content: center; */
     align-items: center;
@@ -290,7 +348,7 @@ body {
 /* ------------------------------------------------------------------------------------------------------------------------------ */
 /* MEMBER CARD CSS */
 .memberCard {
-    background: #ffffff;
+    background: #fffbf7;
     border-radius: 12px;
     padding: 1.5rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -310,9 +368,9 @@ body {
     color: inherit;
     display: inline-block;
     vertical-align: top;
-    max-width: 28vw;
+    /* max-width: 28vw; */
     width: 28vw;
-    margin: 1rem auto;
+    margin: 1rem;
     margin-right: 0.6rem;
     margin-left: 0.6rem;
 }
@@ -327,7 +385,7 @@ body {
 
 .cardStudent1::before {
     content: "Student: ";
-    color: #0070f3;
+    color: #a41313;
     font-weight: 600;
     margin-right: 4px;
 }
@@ -357,14 +415,23 @@ body {
 
 .cardStudentDepartment::before {
     content: "Department: ";
-    color: #0070f3;
+    color: #a41313;
     font-weight: 600;
     margin-right: 4px;
 }
 
 /* ------------------------------------------------------------------------------------------------------------------------------ */
 /* NAVBAR CSS */
-
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap; /* Ensures items stay on the same line */
+}
+.navLink, .navbarCollapse, .logoContainer, .toggleButton {
+    display: inline-block;
+    vertical-align: middle;
+}
 .navContainer {
     display: flex;
     justify-content: space-between;
@@ -391,7 +458,7 @@ body {
 .navbar {
     font-size: 1.2rem; /* Increases the font size */
     padding: 1.5rem; /* Increases the padding */
-    background-color: black;
+    background-color: #fffbf7;
     padding: 0.5rem;
     position: fixed;
     top: 0;
@@ -399,13 +466,14 @@ body {
     width: 100%;
     z-index: 1000;
     margin-bottom: 2rem;
-    color: white;
+    color: #a41313;
     vertical-align: middle;
-    display: inline-block;
+    display: flex;
+    /* justify-content: space-between; */
 }
 
 .navLink {
-    color: white;
+    color: black;
     text-decoration: none;
     padding: 0.5rem 1rem;
     border-radius: 5px;
@@ -413,12 +481,12 @@ body {
     display: inline-block;
 }
 .navLink:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #00ffff;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #a41313;
 }
 .navLink.active {
     background-color: rgba(255, 255, 255, 0.2);
-    color: #00ffff;
+    color: #a41313;
 }
 .logoContainer { 
     display: inline-block; 
@@ -433,6 +501,7 @@ body {
     vertical-align: middle;
     font-size: 1.5rem;
     font-weight: 700;
+    color:#a41313;
 }
 .logoImage {
     display: inline-block;
@@ -446,4 +515,56 @@ body {
     align-items: center;
 }
 
+.navbar-dark .navbar-toggler-icon {
+    align-items: right;
+    margin: 0;
+}
+.navSidebar {
+    right: 0;
+    left: auto;
+}
+.navSidebar {
+    text-decoration: none;
+    position: fixed;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5); /* Removed shadow at the top */
+    top: 4.13rem; /* Adjust this value to match the navbar height */
+    /* left: 0; */
+    background-color: #fffbf7;
+    max-width:60vw;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 1100;
+    border-radius: 0 0 5px 5px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19); */
+}
+
+.navLinkSide {
+    color: gray;
+    text-decoration: none;
+    padding: 0.5rem auto;
+    border-radius: 5px;
+    margin-right:2rem;
+}
+.navLinkSide:hover {
+    color: #a41313;
+}
+.navLinkSide.active {
+    color: #a41313;
+}
+.navList {
+    list-style: none;
+    text-align: right;
+}
+.navSideLink {
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    padding: 0.5rem 1rem;
+}
+.toggleButton {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
 /* ------------------------------------------------------------------------------------------------------------------------------ */

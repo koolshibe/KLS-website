@@ -9,7 +9,7 @@ export const metadata = {
   authors: [{ name: 'Red String Studios' }],
   creator: 'Red String Studios',
   publisher: 'Red String Studios',
-  icon: '/favicon.ico'
+  icon: '/icon.ico',
 }
 
 export default function rootLayout({ children }) {
