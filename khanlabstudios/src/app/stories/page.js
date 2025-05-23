@@ -12,7 +12,7 @@ export default async function Page() {
             <div>
                 <div className={`${styles.sidebar} ${styles.floatLeft}`} id='sidebar' style={sidebarStyle}>
                     <h3 style={
-                        { textAlign: 'center', fontSize: '1.5rem', marginBottom: '2rem', fontFamily: 'Roboto'}
+                        { textAlign: 'center', fontSize: '1.5rem', marginBottom: '1rem', fontFamily: 'Roboto'}
                     }>Quick Access</h3>
                     {data.map((x, index) =>
                         <a className={styles.locallink} key={index} href={`#${x['author']}.${x['title']}}`}>{`${x['title']} - ${x['author']}`}</a>

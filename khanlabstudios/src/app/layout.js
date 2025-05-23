@@ -9,7 +9,7 @@ export const metadata = {
   authors: [{ name: 'Red String Studios' }],
   creator: 'Red String Studios',
   publisher: 'Red String Studios',
-  icon: '/favicon.ico'
+  icon: '/icon.ico',
 }
 
 export default function RootLayout({
@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body><Navbar/>{children}</body>
+      <body suppressHydrationWarning><Navbar/>{children}</body>
     </html>
   )
 }
