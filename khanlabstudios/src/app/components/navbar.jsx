@@ -8,7 +8,26 @@ import { useState } from 'react';
 // import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 const Navbar = () => { 
     const [isOpen, setIsOpen] = useState(false);
+    const sidebarAnimation = (action) => {
+        const sidebar = document.getElementById('collapsibleNavbar');
+        if (sidebar) {
+            if (action === 'open') {
+                sidebar.style.transition = 'transform 0.3s ease-in-out';
+                sidebar.style.transform = 'translateX(0)';
+            } else if (action === 'close') {
+                sidebar.style.transition = 'transform 0.3s ease-in-out';
+                sidebar.style.transform = 'translateX(100%)';
+            }
+        }
+    };
 
+    React.useEffect(() => {
+        if (isOpen) {
+            sidebarAnimation('open');
+        } else {
+            sidebarAnimation('close');
+        }
+    }, [isOpen]);
     const toggleNavbar = () => {
         setIsOpen(!isOpen);
     };
@@ -59,7 +78,7 @@ const Navbar = () => {
                     <span className="navbar-toggler-icon"></span>
                 </button>
             </nav>
-            { isOpen && (
+            {/* { isOpen && ( */}
                 <div className={styles.navSidebar} id="collapsibleNavbar">
                     <ul className={styles.navList}>
                         <Link href="/" className={styles.navSideLink} onClick={toggleNavbar}>
@@ -79,7 +98,7 @@ const Navbar = () => {
                         </Link>
                     </ul>
                 </div>
-            )}
+            {/* )} */}
 
         </div>
     );
