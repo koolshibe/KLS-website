@@ -48,10 +48,19 @@ body {
     white-space:wrap;
 }
 
-.map {
+.mapcontainer {
     position:relative;
-    height:100%;
-    width:100%;
+    width:100vw;
+    height:auto;
+    z-index:10;
+}
+
+.map {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100vw;
+    height:auto;
 }
 
 .tl {
@@ -60,6 +69,7 @@ body {
     width:50%;
     top:0;
     left:0;
+    z-index: 20;
 }
 
 .tr {
@@ -68,6 +78,7 @@ body {
     width:50%;
     top:0;
     right:0;
+    z-index: 20;
 }
 .tl {
     position:absolute;
@@ -75,6 +86,7 @@ body {
     width:50%;
     bottom:0;
     left:0;
+    z-index: 20;
 }
 .tl {
     position:absolute;
@@ -82,6 +94,7 @@ body {
     width:50%;
     bottom:0;
     right:0;
+    z-index: 20;
 }
 
 .cityhover {
@@ -187,6 +200,8 @@ body {
     text-align: center;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
+    padding-left:10%;
+    padding-right:10%;
 }
 
 .title {

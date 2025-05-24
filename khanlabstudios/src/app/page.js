@@ -1,8 +1,9 @@
 import styles from '../globals.module.css';
-import Map from '@/app/components/map.js';
+import { Map } from '@/app/components/map.js';
+
 export default function Page() {
     return (
-        <div className="container text-center mt-5">
+        <div className="text-center mt-5">
             <h1 
                 className={styles.title}>
                 Welcome to Red String Studios
