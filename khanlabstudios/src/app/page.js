@@ -1,4 +1,5 @@
 import styles from '../globals.module.css';
+import Map from '@/app/components/map.js';
 export default function Page() {
     return (
         <div className="container text-center mt-5">
@@ -13,6 +14,7 @@ Lorem aliqua Lorem adipisicing dolore adipisicing minim laborum laboris occaecat
 
 Consectetur fugiat exercitation magna laborum sunt id nulla deserunt ad ad incididunt in est. Nostrud proident minim aliqua aute ipsum aute pariatur dolor tempor nisi. Velit enim eiusmod nostrud dolor anim voluptate fugiat qui culpa incididunt magna excepteur commodo. Culpa magna consequat labore et aute. Exercitation incididunt do elit qui dolore laboris duis excepteur incididunt. Adipisicing esse tempor consequat cillum sit. Dolore veniam id proident anim in anim nostrud do et.
             </p>
+            <Map></Map>
         </div>
     );
 }
