@@ -14,7 +14,6 @@ export async function upload(formdata) {
     const dir = await fs.mkdir(`${process.cwd()}/public/${data[0]["id"]}`, {recursive:true});
 
     formdata.getAll("files").forEach(async element => {
-        console.log(element)
         fs.appendFile(
             `${dir}/${element['name']}`,
             Buffer.from( await element.arrayBuffer() )
