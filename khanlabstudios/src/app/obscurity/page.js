@@ -11,7 +11,8 @@ export default function Page() {
       padding: '32px',
       borderRadius: '12px',
       background: '#f9f9f9',
-      boxShadow: '0 2px 16px rgba(0,0,0,0.08)'
+      boxShadow: '0 2px 16px rgba(0,0,0,0.08)',
+      color: '#a41313',
     }}>
       <label htmlFor="title" className={styles.label} style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>Title:</label>
       <input
@@ -51,7 +52,7 @@ export default function Page() {
         multiple
         className={styles.input}
         style={{
-          marginBottom: '24px'
+          marginBottom: '24px',
         }}
       />
       <button
@@ -60,7 +61,7 @@ export default function Page() {
         style={{
           width: '100%',
           padding: '12px 0',
-          background: 'linear-gradient(90deg, #0070f3 0%, #0051a3 100%)',
+          background: 'linear-gradient(90deg,rgb(243, 0, 0) 0%,rgb(163, 0, 0) 100%)',
           color: '#fff',
           border: 'none',
           borderRadius: '8px',
@@ -72,8 +73,8 @@ export default function Page() {
           transition: 'background 0.2s, transform 0.1s',
           marginTop: '8px'
         }}
-        onMouseOver={e => e.currentTarget.style.background = 'linear-gradient(90deg, #0051a3 0%, #0070f3 100%)'}
-        onMouseOut={e => e.currentTarget.style.background = 'linear-gradient(90deg, #0070f3 0%, #0051a3 100%)'}
+        onMouseOver={e => e.currentTarget.style.background = 'linear-gradient(90deg,rgb(163, 0, 0) 0%,rgb(243, 0, 0) 100%)'}
+        onMouseOut={e => e.currentTarget.style.background = 'linear-gradient(90deg,rgb(243, 0, 0) 0%,rgb(163, 0, 0) 100%)'}
         onMouseDown={e => e.currentTarget.style.transform = 'scale(0.98)'}
         onMouseUp={e => e.currentTarget.style.transform = 'scale(1)'}
       >

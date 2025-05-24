@@ -8,12 +8,25 @@
 */
 
 :root {
-    --x: 15%;
+    /* --x: 0%; */
     --y: calc(var(--x) * 1vw / 1%);
+    /* --navColor:#890a0a; */
+    --navColor:#a41313;
+    --navTextColor:#fffbf7;
+    --textColor:black;
+    --defaultWhite:#fffbf7;
+    --colorTheme:#a41313;
+    --navHoverColor:#f18e8e;
+    --cream:#f8f0e3ff;
+    --mainFont: 'Roboto', sans-serif;
+    --defOpacity: 1;
 }
 
 body {
-    background-color: white;
+    background-color: var(--cream);
+    /* background-image: url('https://static.vecteezy.com/system/resources/previews/001/953/602/non_2x/abstract-wavy-red-backgound-free-vector.jpg'); */
+    background-size: cover;
+    background-attachment: fixed;
     font-family: 'Ronoto', sans-serif;
     margin-top: 5rem; /* Adjust this value to match the navbar height */
 }
@@ -22,13 +35,13 @@ body {
     position: fixed;
     height:100%;
     width: 100%;
-    top: 0;
+    top: 4.13rem;
     right: 0;
     bottom: 0;
     left:0;
     background-color:floralwhite;
     text-align:center;
-    z-index:10;
+    z-index:100;
     transform-origin:right center;
     white-space:wrap;
 }
@@ -125,14 +138,14 @@ body {
 .title,
 .description {
     /* animation: fadeInUp 2s; */
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--mainFont);
     text-align: center;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
 }
 
 .title {
-    color: #a41313;
+    color: var(--colorTheme);
     font-weight: 800;
 }
 
@@ -144,12 +157,12 @@ body {
     width: 13vw;
     max-width: 13vw;
     position: fixed;
-    top: 4.1rem; /* Adjust this value to match the navbar height */
+    top: 4.13rem; /* Adjust this value to match the navbar height */
     left: 0;
     height: calc(100vh - 4.1rem); /* Adjust this value to match the navbar height */
-    background-color: #fffbf7;
+    background-color: var(--defaultWhite);
     overflow-y: auto;
-    color:#a41313;
+    color:var(--colorTheme);
     padding: 1.5rem;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5); /* Removed shadow at the top */
     z-index: 1000;
@@ -162,13 +175,13 @@ body {
     /* margin-left: 10px; */
     text-decoration: none;
     margin-bottom: 5px;
-    color: black;
+    color: var(--textColor);
     font-size: 12px;
     text-align: center;
 }
 
 .locallink:hover {
-    color:#a41313;
+    color:var(--colorTheme);
 }
 
 /* ------------------------------------------------------------------------------------------------------------------------------ */
@@ -176,31 +189,35 @@ body {
 /* STORY CARDS */
 
 #storyCard {
-    opacity: 0.9;
-    background-color: #fffbf7;
-    width: calc(96% - var(--x));
-    left: var(--x);
+    opacity: var(--defOpacity);
+    background-color: var(--defaultWhite);
+    width: 70vw;
+    left: 15vw;
+    /* align-self: center; */
     border-radius: 20px;
     position: relative;
-    font-family: 'Roboto';
+    font-family: var(--mainFont);
     font-weight: 100;
-    display: block;
     margin-bottom: 1rem;
     transition: all 0.3s ease;
     text-align: left;
-    min-height: 50vh; /* Ensures a minimum height of 55vh */
-    /* max-height:100vh; */
-    height: max-content; /* Allows it to grow if content exceeds 55vh */
-    box-sizing: border-box; /* Ensures padding is included in the total height */
+    min-height: 50vh;
+    /* height: max-content; */
+    /* box-sizing: border-box; */
     padding-bottom: 1rem;
-    margin-top:1rem;
+    margin-top: 1rem;
     box-shadow: 0 0 7px gray;
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    /* justify-content: space-between; */
+    /* gap: 1rem; Adds spacing between cards */
+    display: inline-block;
 }
 
 
 #storyCard:hover {
     transform: scale(1.02);
-    box-shadow: 0 0 20px #a41313;
+    box-shadow: 0 0 20px var(--colorTheme);
     transition: all 0.3s ease;
 }
 
@@ -213,7 +230,7 @@ body {
 
 .cardTitle {
     font-size: 50px;
-    color: #a41313;
+    color: var(--colorTheme);
     display: flex;
     /* align-items: center; */
     /* text-align: center; */
@@ -223,7 +240,7 @@ body {
 
 .cardSummary {
     margin-top:4px;
-    color: black;
+    color: var(--textColor);
     font-size:15px;
     position: relative;
     display: inline-block;
@@ -232,13 +249,13 @@ body {
 }
 
 .cardStudent {
-    color: #a41313;
+    color: var(--colorTheme);
     position: relative;
     display: inline-block;
 }
 
 .cardDate {
-    color:black;
+    color:var(--textColor);
     margin-top: 5px;
     position: relative;
     /* display: inline-block; */
@@ -307,7 +324,7 @@ body {
 }
 .cardButton:hover {
     transform: scale(1.08);
-    box-shadow: 0 0 20px #a41313;
+    box-shadow: 0 0 20px var(--colorTheme);
 }
 .cardButton:hover::before {
     opacity: 1;
@@ -328,7 +345,7 @@ body {
 
 
 .cardButton {
-    border-radius: 20px;
+    border-radius: 15px;
     padding: 16px;
     color: white;
     border: none;
@@ -348,14 +365,14 @@ body {
 /* ------------------------------------------------------------------------------------------------------------------------------ */
 /* MEMBER CARD CSS */
 .memberCard {
-    background: #fffbf7;
+    background: var(--defaultWhite);
     border-radius: 12px;
     padding: 1.5rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     /* Ensures it takes up a third of the page */
     text-align: left;
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--mainFont);
 }
 
 .memberCard:hover {
@@ -385,7 +402,7 @@ body {
 
 .cardStudent1::before {
     content: "Student: ";
-    color: #a41313;
+    color: var(--colorTheme);
     font-weight: 600;
     margin-right: 4px;
 }
@@ -415,7 +432,7 @@ body {
 
 .cardStudentDepartment::before {
     content: "Department: ";
-    color: #a41313;
+    color: var(--colorTheme);
     font-weight: 600;
     margin-right: 4px;
 }
@@ -437,15 +454,13 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background-color: black;
-    color: white;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
     margin-bottom: 100%;
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--mainFont);
     font-size: 1.2rem;
     font-weight: 400;
     text-align: center;
@@ -453,12 +468,13 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 .navbar {
+    opacity: var(--defOpacity);
     font-size: 1.2rem; /* Increases the font size */
     padding: 1.5rem; /* Increases the padding */
-    background-color: #fffbf7;
+    background-color: var(--navColor);
     padding: 0.5rem;
     position: fixed;
     top: 0;
@@ -466,14 +482,14 @@ body {
     width: 100%;
     z-index: 1000;
     margin-bottom: 2rem;
-    color: #a41313;
+    color: var(--navTextColor);
     vertical-align: middle;
     display: flex;
     /* justify-content: space-between; */
 }
 
 .navLink {
-    color: black;
+    color: var(--navTextColor);
     text-decoration: none;
     padding: 0.5rem 1rem;
     border-radius: 5px;
@@ -481,12 +497,12 @@ body {
     display: inline-block;
 }
 .navLink:hover {
-    background-color: rgba(255, 255, 255, 0.5);
-    color: #a41313;
+    /* background-color: rgba(255, 255, 255, 0.5); */
+    color: var(--navHoverColor);
 }
 .navLink.active {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #a41313;
+    /* background-color: rgba(255, 255, 255, 0.2); */
+    color: var(--navHoverColor);
 }
 .logoContainer { 
     display: inline-block; 
@@ -501,7 +517,7 @@ body {
     vertical-align: middle;
     font-size: 1.5rem;
     font-weight: 700;
-    color:#a41313;
+    color:var(--navTextColor);
 }
 .logoImage {
     display: inline-block;
@@ -516,40 +532,39 @@ body {
 }
 
 .navbar-dark .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;..");
     align-items: right;
     margin: 0;
 }
 .navSidebar {
     right: 0;
     left: auto;
-}
-.navSidebar {
     text-decoration: none;
     position: fixed;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5); /* Removed shadow at the top */
     top: 4.13rem; /* Adjust this value to match the navbar height */
     /* left: 0; */
-    background-color: #fffbf7;
+    background-color: var(--cream);
     max-width:60vw;
     height: 100vh;
     overflow-y: auto;
     z-index: 1100;
     border-radius: 0 0 5px 5px;
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19); */
+    display: none;
 }
 
 .navLinkSide {
     color: gray;
     text-decoration: none;
-    padding: 0.5rem auto;
+    padding: 0.3rem auto;
     border-radius: 5px;
     margin-right:2rem;
 }
 .navLinkSide:hover {
-    color: #a41313;
+    color: var(--colorTheme);
 }
 .navLinkSide.active {
-    color: #a41313;
+    color: var(--colorTheme);
 }
 .navList {
     list-style: none;
@@ -568,3 +583,46 @@ body {
     transform: translateY(-50%);
 }
 /* ------------------------------------------------------------------------------------------------------------------------------ */
+/* STORY STYLING */
+.storyBody {
+    padding-left:1.5rem;
+    font-family: var(--mainFont);
+}
+
+.storyTitle {
+    /* font-size: 50px; */
+    color: var(--colorTheme);
+    display: flex;
+    /* align-items: center; */
+    /* text-align: center; */
+    /* word-wrap: break-word; Ensure long titles wrap to the next line */
+    /* padding: 0.5rem; Add padding for spacing */
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: 800;
+    animation: fadeInUp 2s;
+    /* text-decoration: underline; */
+}
+
+.storyAuthor {
+    color: var(--colorTheme);
+    /* font-size: 20px; */
+    position: relative;
+    display: inline-block;
+    margin-bottom:0.5rem;
+    text-align: center;
+    font-weight: 400;
+}
+
+.storyDate {
+    color: var(--textColor);
+    position: relative;
+    /* display: inline-block; */
+    font-weight: 300;
+    /* font-size: 15px; */
+}
+
+.storyText {
+
+}

@@ -15,6 +15,7 @@ export function Navbar() {
         const sidebar = document.getElementById('collapsibleNavbar');
         if (sidebar) {
             if (action === 'open') {
+                sidebar.style.display = 'block';
                 sidebar.style.transition = 'transform 0.3s ease-in-out';
                 sidebar.style.transform = 'translateX(0)';
             } else if (action === 'close') {
@@ -67,11 +68,18 @@ export function Navbar() {
                     <h3 className={styles.logoText}>Red String Studios</h3>
                     </TransitionLink>
                 </div>
+                <div className={`collapse navbar-collapse ${styles.navbarCollapse}`} id="visibleNavbar">
+                    <TransitionLink href="/" className={styles.navLink}>Home</TransitionLink>
+                    <TransitionLink href="/team" className={styles.navLink}>About Us</TransitionLink>
+                    <TransitionLink href="/departments" className={styles.navLink}>Departments</TransitionLink>
+                    <TransitionLink href="/stories" className={styles.navLink}>Stories</TransitionLink>
+                    <TransitionLink href="/obscurity" className={styles.navLink}>Upload Story</TransitionLink>
+                </div>
                 <button 
                     className={`navbar-toggler ${styles.toggleButton}`} 
                     onClick={toggleNavbar}
                 >
-                    <span className="navbar-toggler-icon"></span>
+                    <span className="navbar-dark navbar-toggler-icon"></span>
                 </button>
             </nav>
             {/* { isOpen && ( */}
@@ -81,7 +89,7 @@ export function Navbar() {
                             <li className={styles.navLinkSide}>Home</li>
                         </TransitionLink>
                         <TransitionLink href="/team" className={styles.navSideLink} onClick={toggleNavbar}>
-                            <li className={styles.navLinkSide}>Team</li>
+                            <li className={styles.navLinkSide}>About Us</li>
                         </TransitionLink>
                         <TransitionLink href="/departments" className={styles.navSideLink} onClick={toggleNavbar}>
                             <li className={styles.navLinkSide}>Departments</li>
@@ -90,7 +98,7 @@ export function Navbar() {
                             <li className={styles.navLinkSide}>Stories</li>
                         </TransitionLink>
                         <TransitionLink href="/obscurity" className={styles.navSideLink} onClick={toggleNavbar}>
-                            <li className={styles.navLinkSide}>Accounts</li>
+                            <li className={styles.navLinkSide}>Upload Story</li>
                         </TransitionLink>
                     </ul>
                 </div>
