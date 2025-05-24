@@ -82,7 +82,6 @@ export function Navbar() {
                     <span className="navbar-dark navbar-toggler-icon"></span>
                 </button>
             </nav>
-            {/* { isOpen && ( */}
                 <div className={styles.navSidebar} id="collapsibleNavbar">
                     <ul className={styles.navList}>
                         <TransitionLink href="/" className={styles.navSideLink} onClick={toggleNavbar}>
@@ -102,8 +101,6 @@ export function Navbar() {
                         </TransitionLink>
                     </ul>
                 </div>
-            {/* )} */}
-
         </div>
     );
 };
