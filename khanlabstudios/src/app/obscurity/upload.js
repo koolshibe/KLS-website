@@ -8,11 +8,17 @@ export async function upload(formdata) {
 
     const {data, error } = await supabase  
         .from('stories')  
-        .upsert({ title: formdata.get("title"), author: formdata.get("author")})
+        .upsert({ title: formdata.get("title") }, { onConflict:'title' })
         .select()
 
     const dir = await fs.mkdir(`${process.cwd()}/public/${data[0]["id"]}`, {recursive:true});
 
+    formdata.get("author").split(',').forEach(async element => {
+        await supabase  
+        .from('authors')  
+        .upsert({ title: formdata.get("title"), author: element})
+    })
+    
     formdata.getAll("files").forEach(async element => {
         fs.appendFile(
             `${dir}/${element['name']}`,
