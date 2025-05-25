@@ -1,11 +1,17 @@
+'use client'
+
 import * as motion from "motion/react-client"
 import styles from '@/globals.module.css';
+import { useState } from 'react';
 
 export function Island({name, order, text}) {
 
+    const [hover, sethover] = useState(false);
+    const [tapped, settapped] = useState(false);
+
     const variants = {
         rest: {
-            opacity:0,
+            opacity:1,
             x: 200,
             transition: {
                 duration: 2,
@@ -14,7 +20,7 @@ export function Island({name, order, text}) {
             },
         },
         hover: {
-            opacity:1,
+            opacity:0,
             x: 0,
             transition: {
                 duration: 0.4,
@@ -31,13 +37,15 @@ export function Island({name, order, text}) {
         styles.br
     ];
 
+    console.log(style)
+
 
     return(
         <div className={styles.map}>
-            <motion.div initial="rest" whileHover="hover" whileTap="hover" animate="rest" className={`${style[order]} ${styles.cityhover}`}></motion.div>
-            <motion.div className={style[order+1]} variants={variants}>{name}</motion.div>
-            <motion.img className={style[order+2]} src={`/map/${name}.png`} variants={variants} alt={name}></motion.img>
-            <motion.div className={style[order+3]} variants={variants}>{text}</motion.div>
+            <motion.div initial="rest" onHoverStart={(e)=> {sethover(true)}} onHoverEnd={(e) => {if (!tapped) sethover(false) }} onClick={(e)=> {sethover(true); settapped(true)}} onBlur={(e)=> {sethover(false); settapped(false)}} animate="rest" className={`${style[order]} ${styles.cityhover}`}></motion.div>
+            <motion.div key={`${hover}.${tapped}.${name}.1`} className={style[(order+1) % 4]} variants={variants}>{name}</motion.div>
+            <motion.img key={`${hover}.${tapped}.${name}.2`} className={style[(order+2) % 4]} src={`/map/${name}.png`} variants={variants} alt={name}></motion.img>
+            <motion.div key={`${hover}.${tapped}.${name}.3`} className={style[(order+3) % 4]} variants={variants}>{text}</motion.div>
         </div>
     )
 }

@@ -51,7 +51,7 @@ body {
 .mapcontainer {
     position:relative;
     width:100vw;
-    height:auto;
+    height:100vh;
     z-index:10;
 }
 
@@ -60,7 +60,7 @@ body {
     top:0;
     left:0;
     width:100vw;
-    height:auto;
+    height:100vh;
 }
 
 .tl {
@@ -80,7 +80,7 @@ body {
     right:0;
     z-index: 20;
 }
-.tl {
+.bl {
     position:absolute;
     height:50%;
     width:50%;
@@ -88,7 +88,7 @@ body {
     left:0;
     z-index: 20;
 }
-.tl {
+.br {
     position:absolute;
     height:50%;
     width:50%;
