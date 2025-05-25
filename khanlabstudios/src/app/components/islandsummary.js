@@ -1,31 +1,39 @@
 'use client'
 
-import * as motion from "motion/react-client"
+import { AnimatePresence, motion } from 'motion/react'
 import styles from '@/globals.module.css';
 import { useState } from 'react';
 
 export function Island({name, order, text}) {
 
-    const [hover, sethover] = useState(false);
-    const [tapped, settapped] = useState(false);
+    const [hover, setHover] = useState(false)
 
     const variants = {
-        rest: {
-            opacity:1,
+        'initial': {
+            opacity:0,
             x: 200,
             transition: {
-                duration: 2,
+                duration: 0.5,
                 type: "tween",
                 ease: "easeIn",
             },
         },
-        hover: {
-            opacity:0,
+        'animate': {
+            opacity:1,
             x: 0,
             transition: {
-                duration: 0.4,
+                duration: 0.5,
                 type: "tween",
-                ease: "easeOut",
+                ease: "easeIn",
+            },
+        },
+        'exit': {
+            opacity:0,
+            x: 200,
+            transition: {
+                duration: 0.5,
+                type: "tween",
+                ease: "easeIn",
             },
         },
     };
@@ -37,15 +45,19 @@ export function Island({name, order, text}) {
         styles.br
     ];
 
-    console.log(style)
-
 
     return(
         <div className={styles.map}>
-            <motion.div initial="rest" onHoverStart={(e)=> {sethover(true)}} onHoverEnd={(e) => {if (!tapped) sethover(false) }} onClick={(e)=> {sethover(true); settapped(true)}} onBlur={(e)=> {sethover(false); settapped(false)}} animate="rest" className={`${style[order]} ${styles.cityhover}`}></motion.div>
-            <motion.div key={`${hover}.${tapped}.${name}.1`} className={style[(order+1) % 4]} variants={variants}>{name}</motion.div>
-            <motion.img key={`${hover}.${tapped}.${name}.2`} className={style[(order+2) % 4]} src={`/map/${name}.png`} variants={variants} alt={name}></motion.img>
-            <motion.div key={`${hover}.${tapped}.${name}.3`} className={style[(order+3) % 4]} variants={variants}>{text}</motion.div>
+            <AnimatePresence>
+                { hover && (
+                <>
+                    <motion.div className={`${style[(order+1) % 4]} ${styles.title} ${styles.bgcream} anime`} animate={variants['animate']} exit={variants['exit']} initial={variants['initial']}>{name}</motion.div>
+                    <motion.img className={`${style[(order+2) % 4]} anime`} animate={variants['animate']} exit={variants['exit']} initial={variants['initial']} src={`/map/${name}.png`} alt={name}></motion.img>
+                    <motion.div className={`${style[(order+3) % 4]} ${styles.title} ${styles.bgcream} anime`} animate={variants['animate']} exit={variants['exit']} initial={variants['initial']}>{text}</motion.div>
+                </>
+                )}
+                <motion.div key={`${name}1`} className={`${style[order]} ${styles.cityhover}`} id={`${name}pointer`} onHoverStart={() => {setHover(true)}} onHoverEnd={() => {setHover(false)}}></motion.div>
+            </AnimatePresence>
         </div>
     )
 }

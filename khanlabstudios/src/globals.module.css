@@ -104,6 +104,10 @@ body {
     z-index:20;
 }
 
+.bgcream {
+    background-color:var(--cream);
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0.5;
