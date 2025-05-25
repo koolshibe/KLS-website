@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from 'motion/react'
 import styles from '@/globals.module.css';
 import { useState } from 'react';
+import Link from 'next/link';
 
 export function Island({name, order, text}) {
 
@@ -36,6 +37,24 @@ export function Island({name, order, text}) {
                 ease: "easeIn",
             },
         },
+        'linkhover': {
+            opacity:0.5,
+            y:-20,
+            transition: {
+                duration: 0.5,
+                type: "tween",
+                ease: "easeIn",
+            },
+        },
+        'linkanimate': {
+            opacity:1,
+            y:0,
+            transition: {
+                duration: 0.5,
+                type: "tween",
+                ease: "easeIn",
+            },
+        }
     };
 
     const style = [
@@ -56,7 +75,9 @@ export function Island({name, order, text}) {
                     <motion.div className={`${style[(order+3) % 4]} ${styles.title} ${styles.bgcream} anime`} animate={variants['animate']} exit={variants['exit']} initial={variants['initial']}>{text}</motion.div>
                 </>
                 )}
-                <motion.div key={`${name}1`} className={`${style[order]} ${styles.cityhover}`} id={`${name}pointer`} onHoverStart={() => {setHover(true)}} onHoverEnd={() => {setHover(false)}}></motion.div>
+                <motion.div key={`${name}1`} className={`${style[order]} ${styles.cityhover}`} id={`${name}pointer`} onHoverStart={() => {setHover(true)}} onHoverEnd={() => {setHover(false)}} >
+                    <Link initial={variants['linkhover']} animate={variants['linkanimate']} href={`/islands/${name}`}>Learn More</Link>
+                </motion.div>
             </AnimatePresence>
         </div>
     )

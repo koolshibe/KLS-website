@@ -36,7 +36,7 @@ export default async function Page() {
                 <div className={styles.floatRight}>
                     {data.map((x, index) =>
                         <div key={`${index}.${index}`} id={`${x['author']}.${x['title']}}`}>
-                            {<Storycard key={`${index}.${index}.${index}`} summary={x['creator_statement']} title={x['title']} student={x['authors'].map((x)=>`${x['author']}`).toString()} date={x['published']} storyID={x['id']}/>}
+                            {<Storycard key={`${index}.${index}.${index}`} summary={x['creator_statement']} title={x['title']} student={x['authors'].map((x)=>`${x['author']}`)} date={x['published']} storyID={x['id']}/>}
                             {console.log(x)}
                         </div>
                     )}

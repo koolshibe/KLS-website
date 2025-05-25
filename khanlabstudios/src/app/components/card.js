@@ -1,12 +1,13 @@
 import styles from '../../globals.module.css';
 import { TransitionLink } from './transitionlink';
 
-export function Storycard({title, student, date, storyID, summary}) {
-    let newStudent = student.toUpperCase();
+export function Storycard({title, student='', date, storyID, summary}) {
     return (
       <div id={styles.storyCard} className={styles.cardClass}> 
           <div className={styles.smallContainer}>
-            <h4 className={styles.cardStudent}><strong>{newStudent}</strong></h4><span className={styles.breakLine}></span>
+            {(student!='') && (<><h4 className={styles.cardStudent}><strong>{student.map((element,index) => {
+              return <TransitionLink key={index} href={`/authors/${element}`}>{element} </TransitionLink>
+            })}</strong></h4><span className={styles.breakLine}></span></>)}
             <p className={styles.cardDate}>{date}</p><span className={styles.breakLine}></span>
             <h1 className={styles.cardTitle}><strong>{title}</strong></h1><span className={styles.breakLine}></span>
             <p className={styles.cardSummary}>{summary}</p><span className={styles.breakLine}></span>
