@@ -8,7 +8,7 @@ export async function storyfetch() {
 
     const { data, error } = await supabase
         .from("stories")
-        .select('title, published, id, authors!inner(author)')
+        .select('title, published, id, authors!inner(author), summary')
 
     
     console.log(error)
@@ -36,8 +36,8 @@ export default async function Page() {
                 <div className={styles.floatRight}>
                     {data.map((x, index) =>
                         <div key={`${index}.${index}`} id={`${x['author']}.${x['title']}}`}>
-                            {<Storycard key={`${index}.${index}.${index}`} summary={x['creator_statement']} title={x['title']} student={x['authors'].map((x)=>`${x['author']}`)} date={x['published']} storyID={x['id']}/>}
-                            {console.log(x)}
+                            {<Storycard key={`${index}.${index}.${index}`} summary={x['summary']} title={x['title']} student={x['authors'].map((x)=>`${x['author']}`).toString()} date={x['published']} storyID={x['id']}/>}
+                            {console.log(x['summary'])}
                         </div>
                     )}
                 </div>

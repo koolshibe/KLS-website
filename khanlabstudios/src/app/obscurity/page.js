@@ -6,7 +6,7 @@ import styles from '../../globals.module.css';
 export default function Page() {
   return (
     <form className={styles.form} style={{
-      maxWidth: '400px',
+      maxWidth: '70vw',
       margin: '40px auto',
       padding: '32px',
       borderRadius: '12px',
@@ -55,6 +55,42 @@ export default function Page() {
           marginBottom: '24px',
         }}
       />
+      <label htmlFor="story" className={styles.label} style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>Short Story:</label>
+      <textarea
+        id="story"
+        name="story"
+        rows="10"
+        required
+        className={styles.textarea}
+        htmlFor="story"
+        style={{
+          width: '100%',
+          padding: '8px 12px',
+          marginBottom: '18px',
+          border: '1px solid #ccc',
+          borderRadius: '6px'
+        }}
+        placeholder="Write your story here..."
+      ></textarea>
+      <label htmlFor="summary" className={styles.label} style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>Blurb (Under 320 Characters):</label>
+      <textarea
+        id="summary"
+        name="summary"
+        rows="10"
+        required
+        className={styles.textarea}
+        htmlFor="summary"
+        maxLength="320"
+        style={{
+          width: '100%',
+          padding: '8px 12px',
+          marginBottom: '18px',
+          border: '1px solid #ccc',
+          borderRadius: '6px',
+          maxHeight: '20vh',
+        }}
+        placeholder="Write your blurb here..."
+      ></textarea>
       <button
         formAction={upload}
         className={styles.button}
