@@ -2,6 +2,7 @@ import styles from '../../globals.module.css';
 import { TransitionLink } from './transitionlink';
 
 export function Storycard({title, student='', date, storyID, summary}) {
+    console.log(student);
     return (
       <div id={styles.storyCard} className={styles.cardClass}> 
           <div className={styles.smallContainer}>
