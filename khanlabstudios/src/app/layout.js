@@ -1,5 +1,6 @@
 import { Navbar } from "@/app/components/navbar.js";
 import Template from './template.js';
+import './global.css';
 import styles from '@/globals.module.css';
  
 export const metadata = {

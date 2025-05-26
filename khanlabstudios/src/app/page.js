@@ -1,4 +1,4 @@
-import styles from '../globals.module.css';
+import styles from '@/globals.module.css';
 import { Map } from '@/app/components/map.js';
 
 export default function Page() {

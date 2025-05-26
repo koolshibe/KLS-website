@@ -1,4 +1,4 @@
-import styles from '../../globals.module.css';
+import styles from '@/globals.module.css';
 import { TransitionLink } from './transitionlink';
 
 export function Storycard({title, student='', date, storyID, summary}) {
