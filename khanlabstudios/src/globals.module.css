@@ -283,6 +283,13 @@
     color: var(--colorTheme);
     position: relative;
     display: inline-block;
+    text-decoration: none;
+}
+
+.transitionCard {
+    text-decoration: none;
+    color: inherit;
+    margin-right:0.5rem;
 }
 
 .cardDate {
