@@ -19,7 +19,7 @@ export function Navbar() {
                 sidebar.style.display = 'block';
                 sidebar.style.transition = 'transform 0.3s ease-in-out';
                 sidebar.style.transform = 'translateX(0)';
-                toggleButton.style.transform = 'translateX(-29vw)';
+                toggleButton.style.transform = 'translateX(-' + sidebar.offsetWidth + 'px)';
                 toggleButton.style.transition = 'transform 0.3s ease-in-out';
             } else if (action === 'close') {
                 sidebar.style.transition = 'transform 0.3s ease-in-out';
@@ -60,7 +60,7 @@ export function Navbar() {
     }, []);
     return (
         <div className="fixed w-full h-24 shadow bg-white z-10">
-            <nav className={`navbar navbar-expand-lg navbar-light fixed w-full h-24 shadow bg-#fffbf7 z-10 ${styles.navbar}`}>
+            <nav className={`navbar navbar-expand-lg navbar-light fixed w-full h-24 shadow z-10 ${styles.navbar}`}>
                 <div className={styles.logoContainer}>
                     <TransitionLink href="/" className={styles.navSideLink}>
                         <Image 
@@ -84,8 +84,9 @@ export function Navbar() {
                     className={`navbar-toggler ${styles.toggleButton}`} 
                     onClick={toggleNavbar}
                     id="navbarToggler"
+                    style={{ backgroundColor: 'white' }}
                 >
-                    <span className="navbar-dark navbar-toggler-icon"></span>
+                    <span className="navbar-toggler-icon"></span>
                 </button>
             </nav>
                 <div className={styles.navSidebar} id="collapsibleNavbar">

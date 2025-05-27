@@ -569,8 +569,7 @@
     align-items: center;
 }
 
-.navbar-dark .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;..");
+.navbar-toggler-icon {
     align-items: right;
     margin: 0;
 }
