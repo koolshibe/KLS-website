@@ -1,6 +1,7 @@
 import { createClient } from '@/utils/supabase/server';
 import * as fs from 'node:fs/promises';
-import styles from '../../../globals.module.css';
+import styles from '@/globals.module.css';
+import { list } from '@vercel/blob';
 
 export async function storyfetch(context) {
     const supabase = await createClient();
@@ -10,7 +11,9 @@ export async function storyfetch(context) {
         .select()
         .eq('id', context)
 
-    const story = ((await fs.readFile(`${process.cwd()}/public/${context}/story.txt`)))
+    
+    const url = `https://hb2d7h9foo6iagrh.public.blob.vercel-storage.com/${data[0]['id']}`;
+    const story = ((await fetch(`${url}/story.txt`).then(response => response.text())))
 
     return (
         <div key="exist">
@@ -19,7 +22,7 @@ export async function storyfetch(context) {
             <h2 className={styles.storyDate}>{data[0]["published"]}</h2>
             <div className={styles.storyText}>
                 {story.toString().split(/\r\n|\n|\r/).map( (element, index) =>
-                    (element.match(/\$img{()/)) ? <img className={styles.storyImage} key={index} src={`/${context}/${element.substring(5, element.length-1)}`}/> : <div key={index}>{element}</div>
+                    (element.match(/\$img{()/)) ? <img className={styles.storyImage} key={index} src={`${url}/${element.substring(5, element.length-1)}`}/> : <div key={index}>{element}</div>
                 )}
             </div>
         </div>
