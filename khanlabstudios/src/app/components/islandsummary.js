@@ -70,9 +70,17 @@ export function Island({name, order, text}) {
             <AnimatePresence>
                 { hover && (
                 <>
-                    <motion.div className={`${style[(order+1) % 4]} ${styles.title} ${styles.bgcream} anime`} animate={variants['animate']} exit={variants['exit']} initial={variants['initial']}>{name}</motion.div>
-                    <motion.img className={`${style[(order+2) % 4]} anime`} animate={variants['animate']} exit={variants['exit']} initial={variants['initial']} src={`/map/${name}.png`} alt={name}></motion.img>
-                    <motion.div className={`${style[(order+3) % 4]} ${styles.title} ${styles.bgcream} anime`} animate={variants['animate']} exit={variants['exit']} initial={variants['initial']}>{text}</motion.div>
+                    <motion.div className={`${style[(order+2) % 4]} ${styles.bgcream} anime`} animate={variants['animate']} exit={variants['exit']} initial={variants['initial']}>
+                        <span className={styles.title}>
+                            {name}
+                        </span>
+                    </motion.div>
+                    <motion.img className={`${style[(order+1) % 4]} anime`} animate={variants['animate']} exit={variants['exit']} initial={variants['initial']} src={`/map/${name}.png`} alt={name}/>
+                    <motion.div className={`${style[(order+3) % 4]} ${styles.title} ${styles.bgcream} anime`} animate={variants['animate']} exit={variants['exit']} initial={variants['initial']}>
+                        <span className={styles.title}>
+                            {text}
+                        </span>
+                    </motion.div>
                 </>
                 )}
                 <motion.div key={`${name}1`} className={`${style[order]} ${styles.cityhover}`} id={`${name}pointer`} onHoverStart={() => {setHover(true)}} onHoverEnd={() => {setHover(false)}} >
