@@ -2,7 +2,8 @@ import { Navbar } from "@/app/components/navbar.js";
 import Template from './template.js';
 import './global.css';
 import styles from '@/globals.module.css';
- 
+import Head from 'next/head';
+
 export const metadata = {
   title: 'Red String Studios',
   description: 'Red String Studios is a student-run organization at Khan Lab School that focuses on creating and sharing stories.',
@@ -17,6 +18,9 @@ export default function rootLayout({ children }) {
 
   return (  
     <html lang="en">
+      <Head>
+        <title>Red String Studios</title>
+      </Head>
       <body suppressHydrationWarning>
           <Navbar />
           <Template>

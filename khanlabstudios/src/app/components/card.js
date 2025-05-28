@@ -7,7 +7,12 @@ export function Storycard({title, student='', date, storyID, summary}) {
       <div id={styles.storyCard} className={styles.cardClass}> 
           <div className={styles.smallContainer}>
             {(student!='') && (<><h4 className={styles.cardStudent}><strong>{student.map((element,index) => {
-              return <TransitionLink key={index} href={`/authors/${element}`}>{element} </TransitionLink>
+              if (index < student.length - 1) {
+                return <TransitionLink className={styles.transitionCard} key={index} href={`/authors/${element}`}>{element.toUpperCase()},</TransitionLink>
+              } else {
+                // If it's the last element, don't add a comma
+                return <TransitionLink className={styles.transitionCard} key={index} href={`/authors/${element}`}>{element.toUpperCase()}</TransitionLink>
+              }
             })}</strong></h4><span className={styles.breakLine}></span></>)}
             <p className={styles.cardDate}>{date}</p><span className={styles.breakLine}></span>
             <h1 className={styles.cardTitle}><strong>{title}</strong></h1><span className={styles.breakLine}></span>

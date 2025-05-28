@@ -283,6 +283,13 @@
     color: var(--colorTheme);
     position: relative;
     display: inline-block;
+    text-decoration: none;
+}
+
+.transitionCard {
+    text-decoration: none;
+    color: inherit;
+    margin-right:0.5rem;
 }
 
 .cardDate {
@@ -562,8 +569,7 @@
     align-items: center;
 }
 
-.navbar-dark .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;..");
+.navbar-toggler-icon {
     align-items: right;
     margin: 0;
 }
@@ -573,7 +579,8 @@
     text-decoration: none;
     position: fixed;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5); /* Removed shadow at the top */
-    top: 4.13rem; /* Adjust this value to match the navbar height */
+    top:0;
+    /* top: 4.13rem; Adjust this value to match the navbar height */
     /* left: 0; */
     background-color: var(--cream);
     max-width:60vw;
@@ -610,8 +617,8 @@
 .toggleButton {
     position: absolute;
     right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 0.9rem;
+    /* transform: translateY(-50%); */
 }
 /* ------------------------------------------------------------------------------------------------------------------------------ */
 /* STORY STYLING */
