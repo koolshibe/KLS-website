@@ -1,7 +1,6 @@
 import { createClient } from '@/utils/supabase/server';
-import * as fs from 'node:fs/promises';
 import styles from '@/globals.module.css';
-import { list } from '@vercel/blob';
+
 
 export async function storyfetch(context) {
     const supabase = await createClient();
@@ -22,7 +21,7 @@ export async function storyfetch(context) {
             <h2 className={styles.storyDate}>{data[0]["published"]}</h2>
             <div className={styles.storyText}>
                 {story.toString().split(/\r\n|\n|\r/).map( (element, index) =>
-                    (element.match(/\$img{()/)) ? <img className={styles.storyImage} key={index} src={`${url}/${element.substring(5, element.length-1)}`}/> : <div key={index}>{element}</div>
+                    (element.match(/\$img{([^}]*)}/)) ? <img className={styles.storyImage} key={index} src={`${url}/${element.substring(5, element.length-1)}`}/> : <div key={index} dangerouslySetInnerHTML={{__html: element}}/>
                 )}
             </div>
         </div>

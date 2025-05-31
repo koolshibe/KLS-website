@@ -19,6 +19,7 @@ export async function upload(formdata) {
 
     let blob = await put(`${data[0]["id"]}/story.txt`, story, {
       access: 'public',
+      allowOverwrite: true,
     });
 
     formdata.get("author").split(',').forEach(async element => {
@@ -34,6 +35,7 @@ export async function upload(formdata) {
     formdata.getAll("files").forEach(async element => {
         blob = await put(`${data[0]["id"]}/${element['name']}`, element, {
             access: 'public',
+            allowOverwrite: true,
         })
     });
 }
