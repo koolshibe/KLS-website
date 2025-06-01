@@ -91,6 +91,11 @@ export default function Page() {
         }}
         placeholder="Write your blurb here..."
       ></textarea>
+      <label htmlFor="state" className={styles.label} style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>City-state</label>
+      <input type="radio" name="state" value="Vyapar"/>Vyapar
+      <input type="radio" name="state" value="Myrellis"/>Myrellis
+      <input type="radio" name="state" value="Umbra"/>Umbra
+      <input type="radio" name="state" value="Umbra"/>Croyokova
       <button
         formAction={upload}
         className={styles.button}

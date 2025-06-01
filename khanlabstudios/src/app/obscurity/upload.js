@@ -9,8 +9,10 @@ export async function upload(formdata) {
 
     const {data, error } = await supabase  
         .from('stories')  
-        .upsert({ title: formdata.get("title"),
-            summary: formdata.get("summary")
+        .upsert({ 
+            title: formdata.get("title"),
+            summary: formdata.get("summary"),
+            state: formdata.get("state"),
         }, { onConflict:'title' })    
         .select()
 
