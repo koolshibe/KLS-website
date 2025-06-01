@@ -7,7 +7,7 @@ export function Map() {
     <div className={styles.mapcontainer}>
         <Image src='/map/map.jpg' fill={true} sizes="100vw" alt='map. Also you suck' className={styles.map}/>
         <Island name='vyapar' order={1} text="Hi guys. it's me, vyapar. Signaopdsjjkgnkdjagnjksajkghjkdsabadmncbmncxbzjkghgakhdsjhfkjsagj"/>
-        {`<Island name='Nasucia' order={2} text={
+        <Island name='Nasucia' order={2} text={
                 "Hi guys. it's me, vyapar. Signaopdsjjkgnkdjagnjksajkghjkdsabadmncbmncxbzjkghgakhdsjhfkjsagj"
             }/>
             <Island name='Clementine' order={3} text={
@@ -15,7 +15,7 @@ export function Map() {
             }/>
             <Island name='Umber' order={4} text={
                 "Hi guys. it's me, vyapar. Signaopdsjjkgnkdjagnjksajkghjkdsabadmncbmncxbzjkghgakhdsjhfkjsagj"
-        }/>`}
+        }/>
     </div>
     )
 }
