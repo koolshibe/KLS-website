@@ -1,5 +1,6 @@
 import styles from '@/globals.module.css';
 import { Map } from '@/app/components/map.js';
+import Link from 'next/link';
 
 export default function Page() {
     return (
@@ -9,11 +10,7 @@ export default function Page() {
                 Welcome to Red String Studios
             </h1>
             <p className={styles.description}>
-                Aliquip est nostrud nulla duis eiusmod nostrud sunt proident veniam est elit cillum consequat ullamco. Anim ex nulla esse adipisicing dolore incididunt ex consequat. Amet ut adipisicing eiusmod sint ad irure fugiat sunt enim duis. Ipsum culpa eu ut id enim proident cillum anim. Aliquip commodo nulla esse nostrud duis sunt cupidatat id. Deserunt magna esse aliquip ea.
-
-Lorem aliqua Lorem adipisicing dolore adipisicing minim laborum laboris occaecat proident consectetur sint minim. Laborum labore consectetur ipsum pariatur cillum ut fugiat quis proident. Fugiat non aute aliqua eiusmod aute est officia proident.
-
-Consectetur fugiat exercitation magna laborum sunt id nulla deserunt ad ad incididunt in est. Nostrud proident minim aliqua aute ipsum aute pariatur dolor tempor nisi. Velit enim eiusmod nostrud dolor anim voluptate fugiat qui culpa incididunt magna excepteur commodo. Culpa magna consequat labore et aute. Exercitation incididunt do elit qui dolore laboris duis excepteur incididunt. Adipisicing esse tempor consequat cillum sit. Dolore veniam id proident anim in anim nostrud do et.
+                Hello, dearest beholder <s>of the masterpiece blessing your unworthy eyes</s>! Our Netflix overlords decided to task us, Khan Lab School’s Class of 2028, with crafting a storytelling company. We split ourselves across four departments—<Link href='/departments/marcomm'>MarComm</Link>, <Link href='/departments/story'>Story</Link>, <Link href='/departments/art'>Art & Design</Link>, and <Link href='/departments/website'>Website</Link> -as well as a leadership team, and of course, Nicholas Giuseppe Fera, aged 97, to oversee it all. We’ve been through a lot this term—worldbuilding four city-states from the ground up (that totally aren’t ripped off of the Hunger Games), putting together an Instagram campaign, drawing everything from world maps to cityscapes, and coding this very website before your mortal eyes—not to mention writing individual and/or duo <Link href='/stories'>short stories</Link>. Take care as you dive into this world of fantasy and fun (we’re definitely not being held at gunpoint by Netflix), and remember that “in most universes, pineapples don’t talk” - Nick 2024 (RIP).
             </p>
             <Map></Map>
         </div>
