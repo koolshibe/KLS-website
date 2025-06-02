@@ -84,7 +84,7 @@ export function Island({name, order, text}) {
                 </>
                 )}
                 <motion.div key={`${name}1`} className={`${style[order]} ${styles.cityhover}`} id={`${name}pointer`} onHoverStart={() => {setHover(true)}} onClick={() => {setClick(!click); setHover(!click)}} onHoverEnd={() => {!click ? setHover(false): setHover(true)}} >
-                    Learn more
+                    <Link href={`/stories?state=${name}`}>Learn more</Link>
                 </motion.div>
             </AnimatePresence>
         </div>

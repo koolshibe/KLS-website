@@ -9,7 +9,7 @@ export async function storyfetch() {
 
     const { data, error } = await supabase
         .from("stories")
-        .select('title, published, id, authors!inner(author), summary')
+        .select('title, published, state, id, authors!inner(author), summary')
 
     
     console.log(error)
