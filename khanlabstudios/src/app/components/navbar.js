@@ -58,6 +58,16 @@ export function Navbar() {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
+
+    // const handleDropdownChange = (event) => {
+    //     const selectedValue = event.target.value;
+    //     if (selectedValue) {
+    //         window.location.href = `/departments/${selectedValue}`;
+    //     }
+    //     selectedValue.selected = true;
+    // };
+    const [selectedValue, setSelectedValue] = useState("Departments");
+
     return (
         <div className="fixed w-full h-24 shadow bg-white z-10">
             <nav className={`navbar navbar-expand-lg navbar-light fixed w-full h-24 shadow z-10 ${styles.navbar}`}>
@@ -76,7 +86,27 @@ export function Navbar() {
                 <div className={`collapse navbar-collapse ${styles.navbarCollapse}`} id="visibleNavbar">
                     <TransitionLink href="/" className={styles.navLink}>Home</TransitionLink>
                     <TransitionLink href="/team" className={styles.navLink}>About Us</TransitionLink>
-                    <TransitionLink href="/departments" className={styles.navLink}>Departments</TransitionLink>
+                    
+                    <div className="dropdown">
+                        <select
+                            defaultValue="Departments"
+                            className={`${styles.navDrop}`} 
+                            id="departmentsDropdown" 
+                            onChange={(event) => {
+                                const selectedValue = event.target.value;
+                                if (typeof window !== 'undefined' && selectedValue) {
+                                    window.location.href = `/departments/${selectedValue}`;
+                                }
+                                event.target.value = selectedValue; // Reset the dropdown to default after selection
+                            }}
+                        >
+                            <option disabled>Departments</option>
+                            <option value="story">Story</option>
+                            <option value="art">Art</option>
+                            <option value="marcomm">MarComm</option>
+                            <option value="website">Website</option>
+                        </select>
+                    </div>
                     <TransitionLink href="/stories" className={styles.navLink}>Stories</TransitionLink>
                     <TransitionLink href="/obscurity" className={styles.navLink}>Upload Story</TransitionLink>
                 </div>

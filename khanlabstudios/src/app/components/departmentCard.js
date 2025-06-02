@@ -9,7 +9,7 @@ export function DepartmentCard({ name, head = '', description, deptID, members =
                     <>
                         <h4 className={styles.cardHead}>
                             <strong>
-                                <TransitionLink className={styles.transitionCard} href={`/faculty/${head}`}>
+                                <TransitionLink className={styles.transitionCard} href={`/team/#${head}`}>
                                     {head.toUpperCase()}
                                 </TransitionLink>
                             </strong>
@@ -31,10 +31,10 @@ export function DepartmentCard({ name, head = '', description, deptID, members =
                                 <TransitionLink
                                     className={styles.transitionCard}
                                     key={member}
-                                    href={`/members/${member}`}
+                                    href={`/team/#${member}`}
                                 >
                                     {member.toUpperCase()}
-                                    {idx < members.length - 1 ? ', ' : ''}
+                                    {idx < members.length - 1 ? ',' : ''}
                                 </TransitionLink>
                             ))}
                         </p>

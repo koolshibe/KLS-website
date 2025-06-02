@@ -430,8 +430,8 @@
 }
 
 .cardStudent1 {
-    margin: 0 0 0.75rem 0;
-    font-size: 1.4rem;
+    margin: 0 0.85rem 0.75rem 0;
+    font-size: 1.2rem;
     color: #111;
     font-weight: 700;
     position: relative;
@@ -460,18 +460,32 @@
     height: 100px;
     border-radius: 12px;
     margin-bottom: 1rem;
+    margin-left:0.5rem;
     object-fit: cover;
     object-position: top;
     /* Important: Aligns the image to the top */
     float: right;
 }
 
+/* ------------------------------------------------------------------------------------------------------------------------------ */
+/* DEPARTMENT CARD CSS */
 
 .cardStudentDepartment::before {
     content: "Department: ";
     color: var(--colorTheme);
+    background-color: white;
+    /* box-shadow: ; */
     font-weight: 600;
     margin-right: 4px;
+}
+
+.cardClass {
+    background-color: var(--defaultWhite);
+    opacity:0.8;
+    border-radius: 20px;
+    padding:0.5rem;
+    box-shadow: 0 0 7px gray;
+    margin: 1rem;
 }
 
 /* ------------------------------------------------------------------------------------------------------------------------------ */
@@ -618,6 +632,14 @@
     right: 1rem;
     top: 0.9rem;
     /* transform: translateY(-50%); */
+}
+.navDrop {
+    background-color: var(--navColor);
+    border:none;
+    color:var(--navTextColor);
+}
+.navDrop:hover {
+    color: var(--navHoverColor);
 }
 /* ------------------------------------------------------------------------------------------------------------------------------ */
 /* STORY STYLING */
