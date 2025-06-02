@@ -1,7 +1,8 @@
-import { Storycard } from '@/app/components/card.js';
+
 import styles from '@/globals.module.css';
-import React from 'react'; 
+import { Suspense } from 'react'; 
 import { createClient } from '@/utils/supabase/server';
+import Stories from '@/app/components/stories';
 
 export async function storyfetch() {
     const supabase = await createClient();
@@ -17,10 +18,11 @@ export async function storyfetch() {
     );
 }
 
-export default async function Page() {
+export default function Page() {
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
     const sidebarStyle = isMobile ? { display: 'none' } : {};
-    const data = await storyfetch();
+    const data = storyfetch();
+
     return (
         <div key="exist">
             <h1 className={styles.title}>Red String Stories</h1>
@@ -34,12 +36,9 @@ export default async function Page() {
                     )}
                 </div> */}
                 <div className={styles.floatRight}>
-                    {data.map((x, index) =>
-                        <div key={`${index}.${index}`} id={`${x['author']}.${x['title']}}`}>
-                            {<Storycard key={`${index}.${index}.${index}`} summary={x['summary']} title={x['title']} student={x['authors'].map((x)=>`${x['author']}`)} date={x['published']} storyID={x['id']}/>}
-                            {console.log(x['summary'])}
-                        </div>
-                    )}
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <Stories stories={data}/>
+                    </Suspense>
                 </div>
             </div>
         </div>
