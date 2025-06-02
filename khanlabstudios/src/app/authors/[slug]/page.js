@@ -25,7 +25,7 @@ export async function authorfetch(author) {
         .select()
         .eq('name', author.replaceAll('%20', ' '));
 
-    console.log(data);
+    console.log(data[0]['name']);
 
     return (
         data
@@ -34,20 +34,21 @@ export async function authorfetch(author) {
 
 export default async function Page({ params }) {
     const { slug } = await params;
-    console.log(slug);
     const data = await storyfetch(slug);
     const author = await authorfetch(slug);
 
     return (
         <div key="exist">
             
-            <h1 className={styles.title}>{data.length > 0 ? data[0].author + "'s Stories" : 'Author not found'}</h1>
-            <Membercard student={author[0]['name']} bio={author[0]['bio']} studentID={author[0]['id']} department={author[0]['department']} suppressHydrationWarning/>
-            {data.map((x, index) =>
-                <div key={`${index}.${index}`} id={`${x['author']}.${x['title']}`}>
-                    <Storycard key={`${index}.${index}.${index}`} title={x['title']} summary={x['stories']['summary']}  date={x['stories']['published']} storyID={x['stories']['id']}/>
-                </div>
-            )}
+            <h1 className={styles.title}>{author[0]['name'] ? author[0]['name'] + "'s Stories" : 'Author not found'}</h1>
+            <div style={{display:inline-block}}>
+                <Membercard student={author[0]['name']} bio={author[0]['bio']} studentID={author[0]['id']} department={author[0]['department']} suppressHydrationWarning/>
+                {data.map((x, index) =>
+                    <div key={`${index}.${index}`} id={`${x['author']}.${x['title']}`}>
+                        <Storycard key={`${index}.${index}.${index}`} title={x['title']} summary={x['stories']['summary']}  date={x['stories']['published']} storyID={x['stories']['id']}/>
+                    </div>
+                )}
+            </div>
         </div>
     )
 }
