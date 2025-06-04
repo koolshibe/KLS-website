@@ -2,8 +2,15 @@
 
 import { upload } from './upload.js';
 import styles from '../../globals.module.css';
+import { useState } from 'react';
+import dynamic from 'next/dynamic';
+const TinyEditor = dynamic(() => import('../components/Editor'), {
+  ssr: false, // 👈 disables server-side rendering
+});
+// import MyEditor from '../components/Editor.js';
 
 export default function Page() {
+  const [content, setContent] = useState('');
   return (
     <form className={styles.form} style={{
       maxWidth: '70vw',
@@ -20,7 +27,7 @@ export default function Page() {
         name="title"
         type="text"
         required
-        className={styles.input}
+        // className={styles.input}
         style={{
           width: '100%',
           padding: '8px 12px',
@@ -35,7 +42,7 @@ export default function Page() {
         name="author"
         type="text"
         required
-        className={styles.input}
+        // className={styles.input}
         style={{
           width: '100%',
           padding: '8px 12px',
@@ -50,13 +57,13 @@ export default function Page() {
         id="files"
         name="files"
         multiple
-        className={styles.input}
+        // className={styles.input}
         style={{
           marginBottom: '24px',
         }}
       />
       <label htmlFor="story" className={styles.label} style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>Short Story:</label>
-      <textarea
+      {/* <textarea
         id="story"
         name="story"
         rows="10"
@@ -71,7 +78,20 @@ export default function Page() {
           borderRadius: '6px'
         }}
         placeholder="Write your story here..."
-      ></textarea>
+      ></textarea> */}
+      <TinyEditor
+      placeholder="Write your story here..."
+       id="story"
+        name="story"
+       className={styles.textarea}
+        htmlFor="story"
+        style={{
+          width: '100%',
+          padding: '8px 12px',
+          marginBottom: '18px',
+          border: '1px solid #ccc',
+          borderRadius: '6px'
+        }} onChange={setContent} />
       <label htmlFor="summary" className={styles.label} style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>Blurb (Under 320 Characters):</label>
       <textarea
         id="summary"
@@ -80,7 +100,7 @@ export default function Page() {
         required
         className={styles.textarea}
         htmlFor="summary"
-        maxLength="320"
+        maxLength="850"
         style={{
           width: '100%',
           padding: '8px 12px',

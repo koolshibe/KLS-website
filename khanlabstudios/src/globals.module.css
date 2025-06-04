@@ -1,8 +1,12 @@
+
 .input {
-    float:center;
-    border-radius:15px;
+    left: 16.4vw;
+    border-radius:5px;
     width:20vw;
-    margin-left:15vw;
+    /* left:16vw; */
+    position: relative;
+    align-self: center;
+    /* display: inline-block; */
 }
 
 
@@ -40,8 +44,8 @@
     position:absolute;
     height:50%;
     width:50%;
-    top:0;
-    left:0;
+    top:1rem;
+    left:1rem;
     z-index: 20;
 }
 
@@ -49,24 +53,24 @@
     position:absolute;
     height:50%;
     width:50%;
-    top:0;
-    right:0;
+    top:1rem;
+    right:1rem;
     z-index: 20;
 }
 .bl {
     position:absolute;
     height:50%;
     width:50%;
-    bottom:0;
-    left:0;
+    bottom:1rem;
+    left:1rem;
     z-index: 20;
 }
 .br {
     position:absolute;
     height:50%;
     width:50%;
-    bottom:0;
-    right:0;
+    bottom:1rem;
+    right:1rem;
     z-index: 20;
 }
 
@@ -108,30 +112,11 @@
         opacity: 1;
     }
 }
-@media screen and (max-width: 1100px) {
-    .sidebar {
-        display: none;
-    }
-    body #storyCard {
-        align-self: center;
-        width: 92vw;
-        left: 4vw;
-        /* font-size: calc(100% - 10px); */
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-    }
-    .input {
-        margin-left:2vw;
-    }
-}
 @media screen and (max-width: 992px) {
     body .cardLink {
         width: 95%;   
         margin: 1rem;
         margin-right: 0.6rem;
-    }
-    .input {
-        margin-left:0.5rem;
     }
 }
 
@@ -165,6 +150,18 @@
     body .cardSummary:hover, body .cardStudent:hover, body .cardDate:hover, body .cardTitle:hover {
         margin-left: 1rem;
         /* margin-right: 0rem; */
+    }
+    body .input {
+        margin-left:0.5rem;
+        left:0.5rem;
+    }
+    body #storyCard {
+        /* align-self: center; */
+        width: 94.5vw;
+        left: 0vw;
+        /* font-size: calc(100% - 10px); */
+        margin-top: 1rem;
+        margin-bottom: 1rem;
     }
 }
 .floatLeft {
@@ -646,7 +643,7 @@
     /* transform: translateY(-50%); */
 }
 .navDrop {
-    background-color: var(--navColor);
+    background-color: transparent;
     border:none;
     color:var(--navTextColor);
 }
