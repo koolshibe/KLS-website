@@ -7,17 +7,6 @@ import { useRef } from 'react';
 export default function TinyEditor({ initialValue, textareaRef, onChange }) {
   const editorRef = useRef(null);
 
-  const parseImages = (html) => {
-    return html.replace(/\(img:([^)]+)\)/g, (_, src) =>
-      `<img src="${src.trim()}" alt="" style={"width: 100%;
-        height: auto;
-        border-radius: 20px;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-        object-fit: cover;
-        object-position: center;" />`
-    );
-  };
  
   const apiKey = process.env.NEXT_PUBLIC_TINYMCE_API_KEY;
   return (
@@ -26,8 +15,7 @@ export default function TinyEditor({ initialValue, textareaRef, onChange }) {
       onInit={(evt, editor) => {
         editorRef.current = editor;
         if (textareaRef.current) {
-          const raw = editor.getContent();
-          textareaRef.current.value = parseImages(raw);
+          textareaRef.current.value = editor.getContent();
         }
     }}
       initialValue={initialValue}
@@ -59,7 +47,7 @@ export default function TinyEditor({ initialValue, textareaRef, onChange }) {
       }}
       onEditorChange={(content) => {
         if (textareaRef.current) {
-          textareaRef.current.value = parseImages(content); // ✅ stores image HTML
+          textareaRef.current.value = content;
         }
       }}
     //   onEditorChange={(newValue) => onChange?.(newValue)}
