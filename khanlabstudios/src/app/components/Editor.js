@@ -11,7 +11,12 @@ export default function TinyEditor({ initialValue, textareaRef, onChange }) {
   return (
     <Editor
       apiKey='ilrd6x55qngoz2015np6ix5khkd8k4va10f3x9mdq0f1x42i' // Optional for cloud features
-      onInit={(evt, editor) => (editorRef.current = editor)}
+      onInit={(evt, editor) => {
+        editorRef.current = editor
+        if (textareaRef.current) {
+            textareaRef.current.value = editor.getContent(); // store full HTML
+          }
+    }}
       initialValue={initialValue}
       init={{
         selector: 'textarea',
