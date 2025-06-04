@@ -87,7 +87,7 @@ export function Navbar() {
                     <TransitionLink href="/" className={styles.navLink}>Home</TransitionLink>
                     <TransitionLink href="/team" className={styles.navLink}>About Us</TransitionLink>
                     
-                    <div className="dropdown">
+                    <div className= {`dropdown ${styles.navLink}`}>
                         <select
                             defaultValue="Departments"
                             className={`${styles.navDrop}`} 
@@ -127,9 +127,30 @@ export function Navbar() {
                         <TransitionLink href="/team" className={styles.navSideLink}>
                             <li className={styles.navLinkSide} onClick={toggleNavbar}>About Us</li>
                         </TransitionLink>
-                        <TransitionLink href="/departments" className={styles.navSideLink}>
-                            <li className={styles.navLinkSide} onClick={toggleNavbar}>Departments</li>
-                        </TransitionLink>
+                        {/* <TransitionLink href="/departments" className={styles.navSideLink}> */}
+                            <li className={styles.navLinkSide}>
+                            <div className="dropdown">
+                                    <select
+                                        defaultValue="Departments"
+                                        className={`${styles.navDrop}`} 
+                                        id="departmentsDropdown" 
+                                        onChange={(event) => {
+                                            const selectedValue = event.target.value;
+                                            if (typeof window !== 'undefined' && selectedValue) {
+                                                window.location.href = `/departments/${selectedValue}`;
+                                            }
+                                            event.target.value = selectedValue; // Reset the dropdown to default after selection
+                                        }}
+                                    >
+                                        <option disabled>Departments</option>
+                                        <option value="story" onClick={toggleNavbar}>Story</option>
+                                        <option value="art" onClick={toggleNavbar}>Art</option>
+                                        <option value="marcomm" onClick={toggleNavbar}>MarComm</option>
+                                        <option value="website" onClick={toggleNavbar}>Website</option>
+                                    </select>
+                                </div>
+                            </li>
+                        {/* </TransitionLink> */}
                         <TransitionLink href="/stories" className={styles.navSideLink}>
                             <li className={styles.navLinkSide} onClick={toggleNavbar}>Stories</li>
                         </TransitionLink>

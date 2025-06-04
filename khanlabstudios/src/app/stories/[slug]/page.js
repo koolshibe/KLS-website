@@ -18,7 +18,7 @@ export async function storyfetch(context) {
         <div key="exist">
             <h1 className={styles.storyTitle}>{data[0]["title"]}</h1>
             <h2 className={styles.storyAuthor}>{data[0]["author"]}</h2>
-            <h2 className={styles.storyDate}>{data[0]["published"]}</h2>
+            <h4 className={styles.storyDate}>{data[0]["published"]}</h4>
             <div className={styles.storyText}>
                 {story.toString().split(/\r\n|\n|\r/).map( (element, index) =>
                     (element.match(/\$img{([^}]*)}/)) ? <img className={styles.storyImage} key={index} src={`${url}/${element.substring(5, element.length-1)}`}/> : <div key={index} dangerouslySetInnerHTML={{__html: element}}/>
