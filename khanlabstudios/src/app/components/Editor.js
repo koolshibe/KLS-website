@@ -3,19 +3,50 @@
 import { Editor } from '@tinymce/tinymce-react';
 import { useRef } from 'react';
 
+const imageExists = (src) => {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.onload = () => resolve(true);
+      img.onerror = () => resolve(false);
+      img.src = src;
+    });
+  };
+  
+  // 👇 Replace (img:filename) with <img> or error <div>
+  const parseImages = async (html) => {
+    const matches = [...html.matchAll(/\(img:([^)]+)\)/g)];
+  
+    for (const match of matches) {
+      const fullMatch = match[0];       // (img:cat.png)
+      const src = match[1].trim();      // cat.png
+      const exists = await imageExists(src);
+  
+      const replacement = exists
+        ? `<img src="${src}" alt="" style="max-width: 100%; height: auto;" />`
+        : ``;
+  
+      html = html.replace(fullMatch, replacement);
+    }
+  
+    return html;
+  };
+
 export default function TinyEditor({ initialValue, textareaRef, onChange }) {
   const editorRef = useRef(null);
-  const formRef = useRef(null);
-
+  const handleChange = async () => {
+    if (!editorRef.current || !textareaRef.current) return;
+    const raw = editorRef.current.getContent();
+    const parsed = await parseImages(raw);
+    textareaRef.current.value = parsed;
+  };
+ 
   const apiKey = process.env.NEXT_PUBLIC_TINYMCE_API_KEY;
   return (
     <Editor
       apiKey='ilrd6x55qngoz2015np6ix5khkd8k4va10f3x9mdq0f1x42i' // Optional for cloud features
       onInit={(evt, editor) => {
-        editorRef.current = editor
-        if (textareaRef.current) {
-            textareaRef.current.value = editor.getContent(); // store full HTML
-          }
+        editorRef.current = editor;
+        handleChange(); // ✅ on init
     }}
       initialValue={initialValue}
       init={{
@@ -44,11 +75,7 @@ export default function TinyEditor({ initialValue, textareaRef, onChange }) {
             '*': 'color,font-size,font-family,background,background-color,text-decoration,float,display,margin,padding,border'
           }
       }}
-      onEditorChange={(content) => {
-        if (textareaRef.current) {
-          textareaRef.current.value = content; // 🔁 keep hidden textarea synced
-        }
-      }}
+      onEditorChange={handleChange}
     //   onEditorChange={(newValue) => onChange?.(newValue)}
     />
     
