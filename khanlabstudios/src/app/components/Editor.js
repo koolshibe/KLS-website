@@ -3,8 +3,9 @@
 import { Editor } from '@tinymce/tinymce-react';
 import { useRef } from 'react';
 
-export default function TinyEditor({ initialValue, onChange }) {
+export default function TinyEditor({ initialValue, textareaRef, onChange }) {
   const editorRef = useRef(null);
+  const formRef = useRef(null);
 
   const apiKey = process.env.NEXT_PUBLIC_TINYMCE_API_KEY;
   return (
@@ -38,7 +39,13 @@ export default function TinyEditor({ initialValue, onChange }) {
             '*': 'color,font-size,font-family,background,background-color,text-decoration,float,display,margin,padding,border'
           }
       }}
-      onEditorChange={(newValue) => onChange?.(newValue)}
+      onEditorChange={(content) => {
+        if (textareaRef.current) {
+          textareaRef.current.value = content; // 🔁 keep hidden textarea synced
+        }
+      }}
+    //   onEditorChange={(newValue) => onChange?.(newValue)}
     />
+    
   );
 }

@@ -3,6 +3,7 @@
 import { upload } from './upload.js';
 import styles from '../../globals.module.css';
 import { useState } from 'react';
+import {useRef} from 'react';
 import dynamic from 'next/dynamic';
 const TinyEditor = dynamic(() => import('../components/Editor'), {
   ssr: false, // 👈 disables server-side rendering
@@ -11,6 +12,7 @@ const TinyEditor = dynamic(() => import('../components/Editor'), {
 
 export default function Page() {
   const [content, setContent] = useState('');
+  const textareaRef = useRef(null);
   return (
     <form className={styles.form} style={{
       maxWidth: '70vw',
@@ -63,23 +65,9 @@ export default function Page() {
         }}
       />
       <label htmlFor="story" className={styles.label} style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>Short Story:</label>
-      {/* <textarea
-        id="story"
-        name="story"
-        rows="10"
-        required
-        className={styles.textarea}
-        htmlFor="story"
-        style={{
-          width: '100%',
-          padding: '8px 12px',
-          marginBottom: '18px',
-          border: '1px solid #ccc',
-          borderRadius: '6px'
-        }}
-        placeholder="Write your story here..."
-      ></textarea> */}
+      <textarea name="story" ref={textareaRef} style={{ display: 'none' }} />
       <TinyEditor
+      textareaRef={textareaRef}
       placeholder="Write your story here..."
        id="story"
         name="story"
