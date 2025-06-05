@@ -12,7 +12,7 @@ export default function TinyEditor({ initialValue, textareaRef, onChange }) {
 
     // Replace custom image syntax with plain text
     text = text.replace(/\$img{([^}]+)}/g, (_, src) => `$img{${src.trim()}}`);
-    text = text.replace(/\(img:([^)]+)\)/g, (_, src) => `$img:${src.trim()}}`);
+    text = text.replace(/\(img:([^)]+)\)/g, (_, src) => `$img{${src.trim()}}`);
 
     // Optional: strip out HTML tags if needed
     text = text.replace(/<[^>]+>/g, '');
@@ -52,8 +52,16 @@ export default function TinyEditor({ initialValue, textareaRef, onChange }) {
           'undo redo | formatselect | bold italic backcolor | \
           alignleft aligncenter alignright alignjustify | \
           bullist numlist outdent indent | removeformat | help | fontselect fontsizeselect | forecolor backcolor | paste | print',
-          font_family_formats:`Roboto=roboto,helvetica,arial,sans-serif;Arial=arial,helvetica,sans-serif; Courier New=courier new,courier,monospace; Times New Roman=times new roman,times,serif;"IBM Plex Serif"= 'IBM Plex Serif',serif;
-  Spectral=spectral,serif;`,
+          font_family_formats: `
+            Roboto=roboto,helvetica,arial,sans-serif;
+            Arial=arial,helvetica,sans-serif;
+            Courier New=courier new,courier,monospace;
+            Times New Roman=times new roman,times,serif;
+            "IBM Plex Serif"='IBM Plex Serif',serif;
+            Spectral=spectral,serif;
+            Edu SA Hand='Edu SA Hand',cursive;
+            Quicksand=quicksand,sans-serif;
+          `,
           powerpaste_word_import: 'merge',
           paste_data_images: true,
           paste_as_text: false,
