@@ -15,7 +15,7 @@ export default function TinyEditor({ initialValue, textareaRef, onChange }) {
     text = text.replace(/\(img:([^)]+)\)/g, (_, src) => `$img{${src.trim()}}`);
 
     // Optional: strip out HTML tags if needed
-    text = text.replace(/<[^>]+>/g, '');
+    // text = text.replace(/<[^>]+>/g, '');
 
     return text;
   };
