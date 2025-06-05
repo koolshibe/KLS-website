@@ -1,4 +1,5 @@
 import { Navbar } from "@/app/components/navbar.js";
+import { Suspense } from 'react';
 import Template from './template.js';
 import './global.css';
 import styles from '@/globals.module.css';
@@ -28,9 +29,11 @@ export default function rootLayout({ children }) {
       </Head>
       <body suppressHydrationWarning>
           <Navbar />
-          <Template>
-            {children}
-          </Template>
+          <Suspense>
+            <Template>
+              {children}
+            </Template>
+          </Suspense>
           <div id='exit' className={styles.exit}>
           <svg className={styles.redStringAnimation}>
             <path
