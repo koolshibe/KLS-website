@@ -11,8 +11,10 @@ export default function TinyEditor({ initialValue, textareaRef, onChange }) {
     let text = html;
 
     // Replace custom image syntax with plain text
-    text = text.replace(/\$img{([^}]+)}/g, (_, src) => `$img{${src.trim()}}`);
-    text = text.replace(/\(img:([^)]+)\)/g, (_, src) => `$img{${src.trim()}}`);
+    text = text.replace(/\$img{([^}]+)}/g, (_, src) => `$img{${src.trim().replace(/<[^>]+>/g, '')}}`);
+    text = text.replace(/\(img:([^)]+)\)/g, (_, src) => `$img{${src.trim().replace(/<[^>]+>/g, '')}}`);
+    // text = text.replace(/\$img{([^}]+)}/g, (_, src) => `$img{${src.trim()}}`);
+    // text = text.replace(/\(img:([^)]+)\)/g, (_, src) => `$img{${src.trim()}}`);
 
     // Optional: strip out HTML tags if needed
     // text = text.replace(/<[^>]+>/g, '');
