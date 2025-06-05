@@ -18,7 +18,7 @@
     right: 0;
     bottom: 0;
     left:0;
-    background-color:lightcyan;
+    background-color:var(--cream);
     text-align:center;
     z-index:100;
     transform-origin:left center;
@@ -728,8 +728,8 @@
 .storyBody {
     opacity: 0.7;
     background-color: var(--defaultWhite);
-    width: 94vw;
-    left: 3vw;
+    width: 60vw;
+    left: 20vw;
     padding:1rem 1rem 1rem 1rem;
     /* align-self: center; */
     border-radius: 20px;
