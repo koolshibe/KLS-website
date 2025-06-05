@@ -23,7 +23,7 @@ export default function TinyEditor({ initialValue, textareaRef, onChange }) {
   const handleEditorChange = () => {
     if (!editorRef.current || !textareaRef.current) return;
     const html = editorRef.current.getContent();
-    const plain = extractPlainTextContent(html);
+    // const plain = extractPlainTextContent(html);
     textareaRef.current.value = plain;
   };
  
