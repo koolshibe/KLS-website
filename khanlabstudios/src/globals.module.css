@@ -763,6 +763,7 @@
     margin-bottom:0.5rem;
     text-align: center;
     font-weight: 400;
+    font-family: var(--mainFont);
 }
 
 .storyDate {
@@ -771,6 +772,7 @@
     /* display: inline-block; */
     font-weight: 300;
     /* font-size: 15px; */
+    margin-bottom: 0.5rem;
 }
 
 .storyText {

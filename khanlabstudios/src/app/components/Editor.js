@@ -20,12 +20,12 @@ export default function TinyEditor({ initialValue, textareaRef, onChange }) {
     return text;
   };
 
-//   const handleEditorChange = () => {
-//     if (!editorRef.current || !textareaRef.current) return;
-//     const html = editorRef.current.getContent();
-//     const plain = extractPlainTextContent(html);
-//     textareaRef.current.value = plain;
-//   };
+  const handleEditorChange = () => {
+    if (!editorRef.current || !textareaRef.current) return;
+    const html = editorRef.current.getContent();
+    const plain = extractPlainTextContent(html);
+    textareaRef.current.value = plain;
+  };
  
   const apiKey = process.env.NEXT_PUBLIC_TINYMCE_API_KEY;
   return (
@@ -33,10 +33,10 @@ export default function TinyEditor({ initialValue, textareaRef, onChange }) {
       apiKey='ilrd6x55qngoz2015np6ix5khkd8k4va10f3x9mdq0f1x42i' // Optional for cloud features
       onInit={(evt, editor) => {
         editorRef.current = editor;
-        // handleEditorChange();
-        if (textareaRef.current) {
-          textareaRef.current.value = editor.getContent();
-        }
+        handleEditorChange();
+        // if (textareaRef.current) {
+        //   textareaRef.current.value = editor.getContent();
+        // }
     }}
       initialValue={initialValue}
       init={{
@@ -64,12 +64,12 @@ export default function TinyEditor({ initialValue, textareaRef, onChange }) {
             '*': 'color,font-size,font-family,background,background-color,text-decoration,float,display,margin,padding,border'
           }
       }}
-      onEditorChange={(content) => {
-        if (textareaRef.current) {
-          textareaRef.current.value = content;
-        }
-      }}
-    // onEditorChange={handleEditorChange}
+    //   onEditorChange={(content) => {
+    //     if (textareaRef.current) {
+    //       textareaRef.current.value = content;
+    //     }
+    //   }}
+    onEditorChange={handleEditorChange}
     //   onEditorChange={(newValue) => onChange?.(newValue)}
     />
     
