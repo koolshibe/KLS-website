@@ -1,18 +1,15 @@
-'use client'
-
 import DepartmentLayout from '@/app/components/departmentLayout.js';
-import fs from 'fs';
+import * as fs from 'node:fs/promises';
 import path from 'path';
 
-export default function Page() {
+export default async function Page() {
   // const dep = "art";
   const depName = "Art & Design";
   const depFolder = "art";
-  
-    const imagesFolderPath = path.join(process.cwd(), `/public/${depFolder.toLowerCase()}`);
-      const imageFiles = fs.readdirSync(imagesFolderPath).filter(file => /\.(jpg|jpeg|png|gif)$/i.test(file));
-      // const carouselLength = imageFiles.length;
-      const carouselImages = imageFiles.map(file => `/${depFolder.toLowerCase()}/${file}`);
+
+  const imageDirectory = path.join(process.cwd(), `/public/${depFolder}`);
+  const imageFilenames = await fs.readdir(imageDirectory)
+  const carouselImages = imageFilenames.map(file => `/${depFolder.toLowerCase()}/${file}`).filter(file => /\.(jpg|jpeg|png|gif)$/.test(file));;
   return (
     <div >
         <DepartmentLayout
