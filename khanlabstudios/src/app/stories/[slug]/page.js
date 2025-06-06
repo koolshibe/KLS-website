@@ -18,6 +18,7 @@ export async function storyfetch(context) {
 
     return (
         <div>
+            {console.log(story)}
             <h1 className={styles.storyTitle}>{data[0]["title"]}</h1>
             <h2 className={styles.storyAuthor}>{data[0]["authors"].map((x)=>`${x['author']}`)}</h2>
             <h4 className={styles.storyDate}>{data[0]["published"]}</h4>
