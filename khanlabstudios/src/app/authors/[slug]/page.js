@@ -42,7 +42,9 @@ export default async function Page({ params }) {
             
             <h1 className={styles.title}>{author[0]['name'] ? author[0]['name'] + "'s Stories" : 'Author not found'}</h1>
             <div>
+                <div style={{textAlign: 'center', marginBottom: '1rem'}}>
                 <Membercard student={author[0]['name']} bio={author[0]['bio']} studentID={author[0]['id']} department={author[0]['department']} suppressHydrationWarning/>
+                </div>
                 {data.map((x, index) =>
                     <div key={`${index}.${index}`} id={`${x['author']}.${x['title']}`}>
                         <Storycard key={`${index}.${index}.${index}`} title={x['title']} summary={x['stories']['summary']}  date={x['stories']['published']} storyID={x['stories']['id']}/>

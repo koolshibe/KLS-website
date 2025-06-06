@@ -60,7 +60,7 @@ export default function DepartmentLayout({
                 {/* Blurb + Carousel */}
                 <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
                     {/* Blurb */}
-                    <div style={{ flex: 1, minWidth: '300px' }}>
+                    <div style={{ flex: 1, width: 'auto' }}>
                         <div style={{
                             fontSize: '1.1rem',
                             lineHeight: 1.6,
@@ -94,21 +94,23 @@ export default function DepartmentLayout({
                             img ? (
                                 <div key={i} style={{
                                     flex: '0 0 auto',
-                                    maxWidth: '25%',
-                                    maxHeight: '10rem',
-                                    background: '#f0f0f0',
+                                    maxHeight: '16rem',
+                                    maxWidth: '16rem',
+                                    // background: '#f0f0f0',
                                     borderRadius: '10px',
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                     scrollSnapAlign: 'start',
+                                    padding: '8px',
                                     color: '#888'
                                 }}>
                                     <img
                                         alt={img}
                                         style={{
-                                            borderRadius: '8px',
+                                            // borderRadius: '8px',
                                             marginBottom: '8px',
+                                            marginTop: '8px',
                                             width: '100%',
                                             height: 'auto',
                                         }} src={img} />
