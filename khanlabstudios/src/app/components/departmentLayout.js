@@ -1,6 +1,23 @@
 import styles from '@/globals.module.css';
-import { useEffect, useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
+
+async function fetchBios() {
+    const { data, error } = await supabase
+        .from('team')
+        .select('name, bio')
+        .in('name', members);
+
+    if (error) {
+        console.error('Error fetching bios:', error);
+        return;
+    }
+
+    const biosMap = data.reduce((acc, member) => {
+        acc[member.name] = member.bio;
+        return acc;
+    }, {});
+    setBios(biosMap);
+}
 
 export default function DepartmentLayout({
     department_name,
@@ -8,32 +25,11 @@ export default function DepartmentLayout({
     members = [],
     blurb = ""
 }) {
-    const [bios, setBios] = useState({});
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
     const supabase = createClient(supabaseUrl, supabaseKey);
 
-    useEffect(() => {
-        async function fetchBios() {
-            const { data, error } = await supabase
-                .from('team')
-                .select('name, bio')
-                .in('name', members);
-
-            if (error) {
-                console.error('Error fetching bios:', error);
-                return;
-            }
-
-            const biosMap = data.reduce((acc, member) => {
-                acc[member.name] = member.bio;
-                return acc;
-            }, {});
-            setBios(biosMap);
-        }
-
-        fetchBios();
-    }, [members]);
+    fetchBios();
 
     return (
         <div style={{
