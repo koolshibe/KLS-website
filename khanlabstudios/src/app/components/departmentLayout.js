@@ -1,31 +1,29 @@
 import styles from '@/globals.module.css';
-import { createClient } from '@supabase/supabase-js';
+import { createClient } from '@/utils/supabase/server';
 
-async function fetchBios() {
+async function fetchBios(department_name) {
+
+    const supabase = await createClient();
     const { data, error } = await supabase
         .from('team')
-        .select('name, bio')
-        .in('name', members);
+        .select('name, bio, department')
+        .eq('department', department_name);
 
     if (error) {
         console.error('Error fetching bios:', error);
         return;
     }
 
-    return bios;
+    return data;
 }
 
-export default function DepartmentLayout({
+export default async function DepartmentLayout({
     department_name,
     carouselImages = [],
-    members = [],
     blurb = ""
 }) {
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-    const supabase = createClient(supabaseUrl, supabaseKey);
 
-    const bios = fetchBios();
+    const members = await fetchBios(department_name);
 
     return (
         <div style={{
@@ -138,38 +136,20 @@ export default function DepartmentLayout({
                                     width: '100%',
                                 }}>
                                     <img
-                                        alt={member || 'Member'}
+                                        alt={member['name'] || 'Member'}
                                         style={{
                                             borderRadius: '8px',
                                             marginBottom: '8px',
                                             width: '100%',
                                             height: 'auto',
-                                        }} src={'/students/' + member?.toUpperCase() + '.jpg'} />
+                                        }} src={'/students/' + member['name'].toUpperCase() + '.jpg'} />
                                 </div>
 
-                                <div style={{ fontWeight: 500 }} className={styles.adjustPhone}>{member}</div>
-                            </div>
-                        ) : null
-                    ))}
-                </div>
-                <div style={{ marginTop: '2rem' }}>
-                    <h4 style={{ marginBottom: '1rem' }}>Bios</h4>
-                    {members.map((member, i) => (
-                        member ? (
-                            <details key={i} style={{ marginBottom: '1rem' }}>
-                                <summary style={{
-                                    fontFamily: 'Roboto, sans-serif',
-                                    fontSize: '1.4rem',
-                                    color: styles.getColor,
-                                    cursor: 'pointer',
-                                    marginBottom: '0.5rem'
-                                }}>
-                                    {member}
-                                </summary>
+                                <div style={{ fontWeight: 500 }} className={styles.adjustPhone}>{member['name']}</div>
                                 <span style={{ lineHeight: 1.6, color: '#4a4e69' }}>
-                                    {bios[i] || "No bio available"}
+                                    {member['bio'] || "No bio available"}
                                 </span>
-                            </details>
+                            </div>
                         ) : null
                     ))}
                 </div>
