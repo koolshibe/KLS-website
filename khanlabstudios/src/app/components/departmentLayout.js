@@ -12,11 +12,7 @@ async function fetchBios() {
         return;
     }
 
-    const biosMap = data.reduce((acc, member) => {
-        acc[member.name] = member.bio;
-        return acc;
-    }, {});
-    setBios(biosMap);
+    return bios;
 }
 
 export default function DepartmentLayout({
@@ -29,7 +25,7 @@ export default function DepartmentLayout({
     const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
     const supabase = createClient(supabaseUrl, supabaseKey);
 
-    fetchBios();
+    const bios = fetchBios();
 
     return (
         <div style={{
@@ -171,7 +167,7 @@ export default function DepartmentLayout({
                                     {member}
                                 </summary>
                                 <span style={{ lineHeight: 1.6, color: '#4a4e69' }}>
-                                    {bios[member] || "No bio available"}
+                                    {bios[i] || "No bio available"}
                                 </span>
                             </details>
                         ) : null
