@@ -194,6 +194,10 @@
 }
 
 @media screen and (max-width: 768px) {
+    body .adjustPhone {
+        font-size: 0.8rem;
+    }
+    
     body .cardSummary {
         font-size: 15px;
         margin-left: 0rem;
@@ -570,6 +574,10 @@
     margin: 1rem;
 }
 
+.getColor {
+    color: var(--colorTheme);
+}
+
 /* ------------------------------------------------------------------------------------------------------------------------------ */
 /* NAVBAR CSS */
 .navbar {
@@ -772,7 +780,9 @@
     /* display: inline-block; */
     font-weight: 300;
     /* font-size: 15px; */
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid black;
 }
 
 .storyText {
@@ -783,8 +793,9 @@
     width: 10%;
     height: auto;
     border-radius: 20px;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
     object-fit: cover;
     object-position: center;
+    margin:auto;
+    display: block;
+    text-align: center;
 }

@@ -1,7 +1,12 @@
+import DepartmentLayout from '@/app/components/departmentLayout.js';
 export default function Page() {
   return (
     <div >
-        We're artistic!
+        <DepartmentLayout
+        members={["Nuha Arif", "Seerat Dang", "Kristen Lin", "Mikaela Kwan", "Sparsha Shashidhar"]}
+        depStatements={[]}
+        department_name={"Art & Design"}
+        carouselImages={[]}/>
     </div>
   )
 }
