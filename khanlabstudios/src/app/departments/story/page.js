@@ -1,19 +1,21 @@
-import DepartmentLayout from "../../components/departmentLayout.js";
-import fs from 'fs';
+import DepartmentLayout from '@/app/components/departmentLayout.js';
+import * as fs from 'node:fs/promises';
 import path from 'path';
-export default function Page() {
-    const depFolder = "story";
-    const depName = "Story";
-      const imagesFolderPath = path.join(process.cwd(), `/public/${depFolder.toLowerCase()}`);
-        const imageFiles = fs.readdirSync(imagesFolderPath).filter(file => /\.(jpg|jpeg|png|gif)$/i.test(file));
-        // const carouselLength = imageFiles.length;
-        const carouselImages = imageFiles.map(file => `/${depFolder.toLowerCase()}/${file}`);
-    return (
-        <div>
-            <DepartmentLayout  
-            members={["Anandita Mukherjee", "Philip Romahn", "Brooklyn Tamasi", "Maryam Khan", "Khushi Thakkar", "Zoya Khare"]}
-            department_name={depName}
-            carouselImages={carouselImages}/>
-        </div>
-    )
-}   
+
+export default async function Page() {
+  // const dep = "art";
+  const depName = "Story";
+  const depFolder = "story";
+
+  const imageDirectory = path.join(process.cwd(), `/public/${depFolder}`);
+  const imageFilenames = await fs.readdir(imageDirectory)
+  const carouselImages = imageFilenames.map(file => `/${depFolder.toLowerCase()}/${file}`).filter(file => /\.(jpg|jpeg|png|gif)$/.test(file));;
+  return (
+    <div >
+        <DepartmentLayout
+        members={["Nuha Arif", "Seerat Dang", "Kristen Lin", "Mikaela Kwan", "Sparsha Shashidhar"]}
+        department_name={depName}
+        carouselImages={carouselImages}/>
+    </div>
+  )
+}
