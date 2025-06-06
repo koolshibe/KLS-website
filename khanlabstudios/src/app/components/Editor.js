@@ -25,8 +25,8 @@ export default function TinyEditor({ initialValue, textareaRef, onChange }) {
   const handleEditorChange = () => {
     if (!editorRef.current || !textareaRef.current) return;
     const html = editorRef.current.getContent();
-    const plain = extractPlainTextContent(html);
-    textareaRef.current.value = plain;
+    // const plain = extractPlainTextContent(html);
+    textareaRef.current.value = html;
   };
  
   const apiKey = process.env.NEXT_PUBLIC_TINYMCE_API_KEY;
