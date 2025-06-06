@@ -784,9 +784,12 @@
     padding-bottom: 0.5rem;
     border-bottom: 1px solid black;
 }
-
 .storyText {
     text-align: inherit;
+    text-indent: 2em;
+    line-height: 1.4;
+    margin: 0.4em 0; /* Makes the line spacing smaller */
+    /* font-family: var(--mainFont); */
 }
 
 .storyImage {

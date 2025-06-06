@@ -20,10 +20,14 @@ export async function storyfetch(context) {
         <div>
             {console.log(story)}
             <h1 className={styles.storyTitle}>{data[0]["title"]}</h1>
-            <h2 className={styles.storyAuthor}>{data[0]["authors"].map((x)=>`${x['author']}`)}</h2>
+            <h2 className={styles.storyAuthor}>
+              {data[0]["authors"].map((x) => x['author']).join(', ').replace(/, ([^,]*)$/, ', $1')}
+            </h2>
+            {/* <h2 className={styles.storyAuthor}>{data[0]["authors"].map((x)=>`${x['author']}`)}</h2> */}
             <h4 className={styles.storyDate}>{data[0]["published"]}</h4>
             <div className={styles.storyText}>
                 {story.toString().split(/\r\n|\n|\r/).map( (element, index) =>
+                  
                     (element.match(/\(img:([^}]*)\)/)) ? <img className={styles.storyImage} key={index} src={`${url}/${element.match(/\(img:([^}]*)\)/)[1]}`}/> : <div key={index} dangerouslySetInnerHTML={{__html: element}}/>
                 )}
             </div>
