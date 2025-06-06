@@ -9,6 +9,10 @@
     /* display: inline-block; */
 }
 
+.transitionLink {
+    color:var(--colorTheme);
+    text-decoration:underline;
+}
 
 .exit {
     position: fixed;

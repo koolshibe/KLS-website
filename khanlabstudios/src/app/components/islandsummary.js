@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from 'motion/react'
 import styles from '@/globals.module.css';
 import { useState } from 'react';
-import Link from 'next/link';
+import { TransitionLink } from './transitionlink';
 
 export function Island({name, order, text}) {
 
@@ -84,7 +84,7 @@ export function Island({name, order, text}) {
                 </>
                 )}
                 <motion.div key={`${name}1`} className={`${style[order]} ${styles.cityhover}`} id={`${name}pointer`} onHoverStart={() => {setHover(true)}} onClick={() => {setClick(!click); setHover(!click)}} onHoverEnd={() => {!click ? setHover(false): setHover(true)}} >
-                    <Link href={`/stories?state=${name}`}>Learn more</Link>
+                    <TransitionLink href={`/stories?state=${name}`}>Learn more</TransitionLink>
                 </motion.div>
             </AnimatePresence>
         </div>
