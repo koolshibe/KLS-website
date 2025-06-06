@@ -73,7 +73,8 @@ export default function TinyEditor({ initialValue, textareaRef, onChange }) {
           valid_elements: '*[*]',
           valid_styles: {
             '*': 'color,font-size,font-family,background,background-color,text-decoration,float,display,margin,padding,border'
-          }
+          },
+          content_style: `p { margin:0; }`,
       }}
     //   onEditorChange={(content) => {
     //     if (textareaRef.current) {
