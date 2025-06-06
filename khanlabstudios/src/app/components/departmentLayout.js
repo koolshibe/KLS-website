@@ -1,13 +1,10 @@
-'use client'
 import styles from '@/globals.module.css';
-import { TransitionLink } from './transitionlink';
-import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
+
 export default function DepartmentLayout({
     department_name,
     carouselImages = [],
-    draftBoxes = [],
     members = [],
     blurb = ""
 }) {
