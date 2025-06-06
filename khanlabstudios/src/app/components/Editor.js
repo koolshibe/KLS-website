@@ -33,7 +33,7 @@ export default function TinyEditor({ initialValue, textareaRef, onChange }) {
   const apiKey = process.env.NEXT_PUBLIC_TINYMCE_API_KEY;
   return (
     <Editor
-      apiKey='ilrd6x55qngoz2015np6ix5khkd8k4va10f3x9mdq0f1x42i' // Optional for cloud features
+      apiKey={apiKey} // Optional for cloud features
       onInit={(evt, editor) => {
         editorRef.current = editor;
         handleEditorChange();

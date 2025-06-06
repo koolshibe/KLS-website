@@ -4,7 +4,6 @@ export default function Page() {
     <div>
         <DepartmentLayout
         members={["Ruhi Bollini", "Aurovik Roy", "Siddharth Sanyal", "Samaira Panjabi", "Samara Kabir"]}
-        depStatements={[]}
         department_name={"MarComm"}
         carouselImages={[]}
         />

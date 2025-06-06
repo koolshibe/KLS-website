@@ -24,7 +24,7 @@ export async function storyfetch(context) {
             <h4 className={styles.storyDate}>{data[0]["published"]}</h4>
             <div className={styles.storyText}>
                 {story.toString().split(/\r\n|\n|\r/).map( (element, index) =>
-                    (element.match(/<p>\(img:([^}]*)\)<\/p>/)) ? <img className={styles.storyImage} key={index} src={`${url}/${element.substring(8, element.length-5)}`}/> : <div key={index} dangerouslySetInnerHTML={{__html: element}}/>
+                    (element.match(/<p>\(img:([^}]*)\)<\/p>/g)) ? <img className={styles.storyImage} key={index} src={`${url}/${element.substring(8, element.length-5)}`}/> : <div key={index} dangerouslySetInnerHTML={{__html: element}}/>
                 )}
             </div>
         </div>

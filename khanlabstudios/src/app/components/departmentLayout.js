@@ -1,15 +1,43 @@
-// 'use client'
+'use client'
 import styles from '@/globals.module.css';
 import { TransitionLink } from './transitionlink';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import { createClient } from '@supabase/supabase-js';
 export default function DepartmentLayout({
     department_name,
-    depStatements = [],
     carouselImages = [],
     draftBoxes = [],
     members = [],
     blurb = ""
 }) {
+    const [bios, setBios] = useState({});
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    const supabase = createClient(supabaseUrl, supabaseKey);
+
+    useEffect(() => {
+        async function fetchBios() {
+            const { data, error } = await supabase
+                .from('team')
+                .select('name, bio')
+                .in('name', members);
+
+            if (error) {
+                console.error('Error fetching bios:', error);
+                return;
+            }
+
+            const biosMap = data.reduce((acc, member) => {
+                acc[member.name] = member.bio;
+                return acc;
+            }, {});
+            setBios(biosMap);
+        }
+
+        fetchBios();
+    }, [members]);
+
     return (
         <div style={{
             maxWidth: '1000px',
@@ -38,14 +66,24 @@ export default function DepartmentLayout({
                             lineHeight: 1.6,
                             color: '#4a4e69'
                         }}>
-                          {blurb}  
+                            <h4 style={{
+                                fontSize: '1.2rem',
+                                fontWeight: 600,
+                                marginBottom: '12px'
+                            }}>Department Statement</h4>
+                            {blurb.split('\n').map((line, index) => (
+                                <p key={index} style={{ marginBottom: '1rem' }}>
+                                    {line}
+                                </p>
+                            ))}
                         </div>
                     </div>
 
                     {/* Carousel */}
                     <div style={{
                         flex: 1,
-                        minWidth: '300px',
+                        minWidth: '150px',
+                        maxWidth: '400px',
                         overflowX: 'auto',
                         display: 'flex',
                         gap: '16px',
@@ -54,35 +92,34 @@ export default function DepartmentLayout({
                     }}>
                         {carouselImages.map((img, i) => (
                             img ? (
-                            <div key={i} style={{
-                                flex: '0 0 auto',
-                                maxWidth: '25%',
-                                maxHeight:'10rem',
-                                // height: 'auto',
-                                background: '#f0f0f0',
-                                borderRadius: '10px',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                scrollSnapAlign: 'start',
-                                color: '#888'
-                            }}>
-                                <img 
-                            alt={img}
-                            style={{
-                                borderRadius: '8px',
-                                marginBottom: '8px',
-                                width: '100%',
-                                height: 'auto',
-                            }} src={img}/>
-                            </div>
-                            ) : null    
-                    ))}
+                                <div key={i} style={{
+                                    flex: '0 0 auto',
+                                    maxWidth: '25%',
+                                    maxHeight: '10rem',
+                                    background: '#f0f0f0',
+                                    borderRadius: '10px',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    scrollSnapAlign: 'start',
+                                    color: '#888'
+                                }}>
+                                    <img
+                                        alt={img}
+                                        style={{
+                                            borderRadius: '8px',
+                                            marginBottom: '8px',
+                                            width: '100%',
+                                            height: 'auto',
+                                        }} src={img} />
+                                </div>
+                            ) : null
+                        ))}
                     </div>
                 </div>
-                            </section>
+            </section>
 
-                            {/* Members Section */}
+            {/* Members Section */}
             <section style={{ textAlign: 'center' }}>
                 <h3 style={{
                     fontSize: '1.5rem',
@@ -97,52 +134,53 @@ export default function DepartmentLayout({
                 }}>
                     {members.map((member, i) => (
                         member ? (
-                        <div key={i} style={{
-                            width: '20%',
-                            background: '#f9f9f9',
-                            border: '1px solid #ddd',
-                            borderRadius: '10px',
-                            padding: '12px',
-                            textAlign: 'center',
-                            alignItems: 'center',
-                        }}>
-                            <div style={{
-                                width: '100%',
-                                // height: '100%',
-                                
-                            }}><img 
-                            alt={members[i] || 'Member'}
-                            style={{
-                                borderRadius: '8px',
-                                marginBottom: '8px',
-                                width: '100%',
-                                height: 'auto',
-                            }} src={'/students/' + members[i]?.toUpperCase() + '.jpg'}/></div>
-                            
-                            <div style={{ fontWeight: 500 }} className={styles.adjustPhone}>{members[i]}</div>
-                        </div>
+                            <div key={i} style={{
+                                width: '20%',
+                                background: '#f9f9f9',
+                                border: '1px solid #ddd',
+                                borderRadius: '10px',
+                                padding: '12px',
+                                textAlign: 'center',
+                                alignItems: 'center',
+                            }}>
+                                <div style={{
+                                    width: '100%',
+                                }}>
+                                    <img
+                                        alt={member || 'Member'}
+                                        style={{
+                                            borderRadius: '8px',
+                                            marginBottom: '8px',
+                                            width: '100%',
+                                            height: 'auto',
+                                        }} src={'/students/' + member?.toUpperCase() + '.jpg'} />
+                                </div>
+
+                                <div style={{ fontWeight: 500 }} className={styles.adjustPhone}>{member}</div>
+                            </div>
                         ) : null
                     ))}
                 </div>
-                <div style={{marginTop: '2rem   '}}> 
-                    <h4 style={{marginBottom: '1rem'
-                                        }}>Department Statements</h4>
-                {depStatements.map((statement, i) => (
-                                statement ? (
-                                    <details key={i} style={{ marginBottom: '1rem' }}>
-                                        <summary style={{
-                                            fontFamily: 'Roboto, sans-serif',
-                                            fontSize: '1.4rem',
-                                            color: styles.getColor,
-                                            cursor: 'pointer',
-                                            marginBottom: '0.5rem'
-                                        }}>
-                                            {members[i]}
-                                        </summary>
-                                        <span style={{ lineHeight: 1.6, color: '#4a4e69' }}>{statement}</span>
-                                    </details>
-                                ) : null
-                            ))}
+                <div style={{ marginTop: '2rem' }}>
+                    <h4 style={{ marginBottom: '1rem' }}>Bios</h4>
+                    {members.map((member, i) => (
+                        member ? (
+                            <details key={i} style={{ marginBottom: '1rem' }}>
+                                <summary style={{
+                                    fontFamily: 'Roboto, sans-serif',
+                                    fontSize: '1.4rem',
+                                    color: styles.getColor,
+                                    cursor: 'pointer',
+                                    marginBottom: '0.5rem'
+                                }}>
+                                    {member}
+                                </summary>
+                                <span style={{ lineHeight: 1.6, color: '#4a4e69' }}>
+                                    {bios[member] || "No bio available"}
+                                </span>
+                            </details>
+                        ) : null
+                    ))}
                 </div>
             </section>
         </div>

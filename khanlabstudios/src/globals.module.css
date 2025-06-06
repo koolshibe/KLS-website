@@ -786,16 +786,17 @@
 }
 
 .storyText {
-
+    text-align: inherit;
 }
 
 .storyImage {
-    width: 10%;
+    width: 20%;
     height: auto;
     border-radius: 20px;
     object-fit: cover;
     object-position: center;
     margin:auto;
+    margin-bottom: 2rem;
     display: block;
     text-align: center;
 }
