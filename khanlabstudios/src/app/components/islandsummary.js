@@ -75,7 +75,7 @@ export function Island({name, order, text}) {
                             {name}
                         </div>
                     </motion.div>
-                    <motion.img className={`${style[(order+2) % 4]} anime`} animate={variants['animate']} exit={variants['exit']} initial={variants['initial']} src={`/map/${name}.png`} alt={name} onerror={`this.src = "${name}.jpg";`}/>
+                    <motion.img className={`${style[(order+2) % 4]} anime`} animate={variants['animate']} exit={variants['exit']} initial={variants['initial']} src={`/map/${name}.png`} alt={name} onError={`this.src = "${name}.jpg";`}/>
                     <motion.div className={`${style[(order+3) % 4]} ${styles.bgcream} anime`} animate={variants['animate']} exit={variants['exit']} initial={variants['initial']}>
                         <div className={styles.title}>
                             {text}
