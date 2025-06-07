@@ -5,7 +5,7 @@ import styles from '@/globals.module.css';
 export function Map() {
     return (
     <div className={styles.mapcontainer}>
-        <Image src='/map/map.jpg' fill={true} sizes="100vw" alt='map. Also you suck' className={styles.map}/>
+        <Image src='/map/smap.png' fill={true} sizes="100vw" alt='map. Also you suck' className={styles.map}/>
         <Island name='vyapar' order={1} text=
             "Vyapar’s people are heavily militarized & regimented, having bought into their own propaganda about the value of duty above all else. Under the mit’a system, every “non-magical” citizen has a mandatory period in the mines, army, and construction. Those with substantial magic from the beginning experience a very different kind of life - they are in charge of maintaining the force field, managing magical supplies, and running the city. They can apply to join the research community and work as an intern under a master."/>
         <Island name='myrellis' order={2} text={
