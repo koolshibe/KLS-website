@@ -11,7 +11,28 @@ export default async function Page() {
   const imageFilenames = await fs.readdir(imageDirectory)
   const carouselImages = imageFilenames.map(file => `/${depFolder.toLowerCase()}/${file}`).filter(file => /\.(jpg|jpeg|png|gif)$/.test(file));;
   return (
-    <div >
+    <div>
+        <a 
+          href="https://drive.google.com/file/d/1oFXmG09sEMCKcvmDNUU_itW7DYq-C-kl/view?usp=sharing" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          style={{
+            display: 'block',
+            margin: 'auto',
+            width:'40vw',
+            padding: '10px 20px',
+            backgroundColor: '#007BFF',
+            color: '#fff',
+            textDecoration: 'none',
+            borderRadius: '5px',
+            fontWeight: 'bold',
+            textAlign: 'center',
+            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+            transition: 'background-color 0.3s ease'
+          }}
+        >
+          Watch the video
+        </a>
         <DepartmentLayout
         members={["Nuha Arif", "Seerat Dang", "Kristen Lin", "Mikaela Kwan", "Sparsha Shashidhar"]}
         department_name={depName}
