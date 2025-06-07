@@ -83,7 +83,6 @@ export default async function DepartmentLayout({
                                     flex: '0 0 auto',
                                     maxHeight: '16rem',
                                     maxWidth: '16rem',
-                                    // background: '#f0f0f0',
                                     borderRadius: '10px',
                                     display: 'flex',
                                     alignItems: 'center',
@@ -95,7 +94,6 @@ export default async function DepartmentLayout({
                                     <img
                                         alt={img}
                                         style={{
-                                            // borderRadius: '8px',
                                             marginBottom: '8px',
                                             marginTop: '8px',
                                             width: '100%',
@@ -146,10 +144,41 @@ export default async function DepartmentLayout({
                                 </div>
 
                                 <div style={{ fontWeight: 500 }} className={styles.adjustPhone}>{member['name']}</div>
-                                <span style={{ lineHeight: 1.6, color: '#4a4e69' }}>
-                                    {member['bio'] || "No bio available"}
-                                </span>
                             </div>
+                        ) : null
+                    ))}
+                </div>
+                {/* Bios Section */}
+                <div style={{ marginTop: '2rem', display: 'block' }}>
+                    <h4 style={{ marginBottom: '1rem' }}>Bios</h4>
+                    {members.map((member, i) => (
+                        member ? (
+                            <details key={i} style={{
+                                marginBottom: '1rem',
+                                padding: '1rem',
+                                border: '1px solid #ddd',
+                                borderRadius: '8px',
+                                background: '#f9f9f9',
+                                textAlign: 'left',
+                            }}>
+                                <summary style={{
+                                    fontWeight: 600,
+                                    cursor: 'pointer',
+                                    outline: 'none',
+                                }}>
+                                    {member['name']}
+                                </summary>
+                                {member['bio'].split('\n').map((line, index) => (
+                                    <p key={index} style={{
+                                        marginTop: '0.5rem',
+                                        fontSize: '1rem',
+                                        lineHeight: 1.6,
+                                        color: '#4a4e69',
+                                    }}>
+                                        {line}
+                                    </p>
+                                ))}
+                            </details>
                         ) : null
                     ))}
                 </div>

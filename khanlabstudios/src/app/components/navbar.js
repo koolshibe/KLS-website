@@ -102,7 +102,7 @@ export function Navbar() {
                         >
                             <option disabled>Departments</option>
                             <option value="story">Story</option>
-                            <option value="art">Art</option>
+                            <option value="art">Art & Design</option>
                             <option value="marcomm">MarComm</option>
                             <option value="website">Website</option>
                         </select>
