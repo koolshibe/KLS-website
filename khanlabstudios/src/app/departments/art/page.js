@@ -15,7 +15,8 @@ export default async function Page() {
         <DepartmentLayout
         members={["Nuha Arif", "Seerat Dang", "Kristen Lin", "Mikaela Kwan", "Sparsha Shashidhar"]}
         department_name={depName}
-        carouselImages={carouselImages}/>
+        carouselImages={carouselImages}
+        blurb={''}/>
     </div>
   )
 }
