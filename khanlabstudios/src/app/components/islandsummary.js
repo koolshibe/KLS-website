@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from 'motion/react'
 import styles from '@/globals.module.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { TransitionLink } from './transitionlink';
 
 export function Island({name, order, text}) {
@@ -71,11 +71,11 @@ export function Island({name, order, text}) {
                 { hover && (
                 <>
                     <motion.div className={`${style[(order+1) % 4]} ${styles.bgcream} anime`} animate={variants['animate']} exit={variants['exit']} initial={variants['initial']}>
-                        <div className={styles.title}>
+                        <div className={`${styles.title} ${styles.mapTitle}`}>
                             {name}
                         </div>
                     </motion.div>
-                    <motion.img className={`${style[(order+2) % 4]} anime`} animate={variants['animate']} exit={variants['exit']} initial={variants['initial']} src={`/map/${name}.png`} alt={name} onError={`this.src = "${name}.jpg";`}/>
+                    <motion.img className={`${style[(order+2) % 4]} anime`} animate={variants['animate']} exit={variants['exit']} initial={variants['initial']} src={`/map/${name}.png`} alt={name} id={name} onError={() => document.querySelector(`#${name}`).src=`/map/${name}.jpg`}/>
                     <motion.div className={`${style[(order+3) % 4]} ${styles.bgcream} anime`} animate={variants['animate']} exit={variants['exit']} initial={variants['initial']}>
                         <div className={styles.title}>
                             {text}
@@ -84,7 +84,7 @@ export function Island({name, order, text}) {
                 </>
                 )}
                 <motion.div key={`${name}1`} className={`${style[order]} ${styles.cityhover}`} id={`${name}pointer`} onHoverStart={() => {setHover(true)}} onClick={() => {setClick(!click); setHover(!click)}} onHoverEnd={() => {!click ? setHover(false): setHover(true)}} >
-                    <TransitionLink href={`/stories?state=${name}`}>Learn more</TransitionLink>
+                    <TransitionLink href={`/stories?state=${name}`}>Stories</TransitionLink>
                 </motion.div>
             </AnimatePresence>
         </div>

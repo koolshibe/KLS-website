@@ -245,8 +245,8 @@
     position:absolute;
     height:50%;
     width:50%;
-    top:1rem;
-    left:1rem;
+    top:0;
+    left:0;
     z-index: 20;
 }
 
@@ -254,35 +254,36 @@
     position:absolute;
     height:50%;
     width:50%;
-    top:1rem;
-    right:1rem;
+    top:0;
+    right:0;
     z-index: 20;
 }
 .bl {
     position:absolute;
     height:50%;
     width:50%;
-    bottom:1rem;
-    left:1rem;
+    bottom:0;
+    left:0;
     z-index: 20;
 }
 .br {
     position:absolute;
     height:50%;
     width:50%;
-    bottom:1rem;
-    right:1rem;
+    bottom:0;
+    right:0;
     z-index: 20;
 }
 
 .cityhover {
-    width:5%;
-    height:5%;
-    z-index:20;
+    width:50%;
+    height:25%;
+    z-index:19;
 }
 
 .bgcream {
     background-color:var(--cream);
+    overflow-y:scroll;
 }
 
 @keyframes fadeInUp {
@@ -889,6 +890,23 @@
     font-weight: 800;
     animation: fadeInUp 2s;
     /* text-decoration: underline; */
+}
+
+.mapTitle {
+    /* font-size: 50px; */
+    color: var(--colorTheme);
+    display: flex;
+    /* align-items: center; */
+    /* text-align: center; */
+    /* word-wrap: break-word; Ensure long titles wrap to the next line */
+    /* padding: 0.5rem; Add padding for spacing */
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: 800;
+    animation: fadeInUp 2s;
+    /* text-decoration: underline; */
+    font-size:12vw;
 }
 
 .storyAuthor {
