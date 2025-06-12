@@ -47,11 +47,12 @@ export default async function DepartmentLayout({
                 {/* Blurb + Carousel */}
                 <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
                     {/* Blurb */}
+                    
                     <div style={{ flex: 1, width: 'auto' }}>
                         <div style={{
                             fontSize: '1.1rem',
                             lineHeight: 1.6,
-                            color: '#4a4e69'
+                            color: '#4a4e69',
                         }}>
                             <h4 style={{
                                 fontSize: '1.2rem',
@@ -59,7 +60,8 @@ export default async function DepartmentLayout({
                                 marginBottom: '12px'
                             }}>Department Statement</h4>
                             {blurb.split('\n').map((line, index) => (
-                                <p key={index} style={{ marginBottom: '1rem' }}>
+                                <p key={index} style={{ marginBottom: '1rem', maxWidth: '98%',
+                                    width:'auto', }}>
                                     {line}
                                 </p>
                             ))}
